@@ -1,0 +1,1089 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+}
+
+.font-white-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    font-size: 16px;
+}
+
+.font-blue-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: #2584C9;
+    font-size: 16px;
+}
+
+.font-white-37px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 700;
+    color: white;
+    font-size: 37px;
+}
+
+.font-grey-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: #5E5E5E;
+    font-size: 16px;
+}
+
+.font-black-20px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
+    font-size: 20px;
+}
+
+.font-black-18px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 18px;
+}
+
+.font-black-17px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 17px;
+}
+
+.font-black-high-17px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 17px;
+    line-height: 190%;
+}
+
+.font-black-15px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    color: #5E5E5E;
+    font-size: 15px;
+}
+
+.font-light-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    color: black;
+    font-size: 16px;
+}
+
+.font-blue-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    color: #2584C9;
+    font-size: 16px;
+}
+
+.font-white-19px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 600;
+    color: white;
+    font-size: 19px;
+}
+
+.font-black-30px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
+    font-size: 30px;
+}
+
+.font-black-21px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 21px;
+}
+
+.font-black-19px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 19px;
+}
+
+.font-white-17px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    font-size: 17px;
+}
+
+.font-blue-17px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: #2584C9;
+    font-size: 17px;
+}
+
+.font-black-light-18px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    color: black;
+    font-size: 18px;
+    line-height: 190%;
+}
+
+.font-black-23px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
+    font-size: 23px;
+}
+
+.font-black-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 16px;
+}
+
+.font-white-18px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    font-size: 18px;
+}
+
+.font-grey-light-16px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    color: #5E5E5E;
+    font-size: 16px;
+}
+
+.font-black-20px-regular{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
+    font-size: 20px;
+}
+
+.wrapper{
+    max-width: 1172px;
+    padding-inline: 16px;
+    margin: 0 auto;
+}
+
+header{
+    background-color: #2584C9;
+    padding: 27px 0;
+}
+
+.header-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.header-links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 640px;
+    gap: 10px;
+}
+
+.header-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.btn-blue{
+    background-color: #2584C9;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 12px 17px;
+    cursor: pointer;
+}
+
+.btn-white{
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 12px 17px;
+    cursor: pointer;
+}
+
+.main-background{
+    background-image: url(/public/images/main-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 74vh;
+    display: flex;
+    align-items: center;
+}
+
+.main-inner{
+    width: 100%;
+}
+
+.home-search{
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: min(100%, 550px);
+}
+
+.search-field{
+    width: min(100%, 464px);
+    height: 44px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 34px;
+    margin-right: 3px;
+}
+
+.btn-search{
+    background-color: #2584C9;
+    border-radius: 10px;
+    width: min(100%, 81px);
+    padding: 12px 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.main-searh{
+    position: relative;
+    margin-top: 50px;   
+    display: flex;
+    align-items: center;
+}
+
+.glass{
+    position: absolute;
+    left: 10px;
+}
+
+.title{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.title{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.title-second{
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.cards{
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 264px);
+    row-gap: 28px;
+}
+
+.card{
+    border: 3px solid #2584C9;
+    border-radius: 0 20px 0 20px;
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card > p{
+    padding: 20px 0 20px 20px;
+}
+
+.card > h2{
+    padding: 20px 0 5px 20px;
+}
+
+hr{
+    height: 1px;
+    background-color: #CECECE;
+    border: none;
+}
+
+.cards-companies{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-company{
+    text-align: center;
+}
+
+.industries{
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.industries > ul > li{
+    margin-bottom: 14px;
+}
+
+.by-schedule-list{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.about-us-text{
+    margin-bottom: 30px;
+    width: 90%;
+}
+
+.about-us{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 120px;
+    margin-bottom: 100px;
+}
+
+footer{
+    background-color: #2584C9;
+    margin-top: 100px;
+}
+
+.footer-inner{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 35px;
+    padding-bottom: 120px;
+    gap: 25px;
+}
+
+.footer-links{
+    display: flex;
+    justify-content: space-between;
+    width: 684px;
+    gap: 15px;
+}
+
+.footer-links > ul > li{
+    margin-bottom: 22px;
+}
+
+.footer-links > ul > a > li{
+    margin-bottom: 22px;
+}
+
+.footer-contacts{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 167px;
+}
+
+.vacancy-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.vacancy-header-left{
+    padding: 30px;
+    border: 1px solid #2584C9;
+    border-radius: 20px;
+    width: min(100%, 762px);
+}
+
+.vacancy-header-left > h2{
+    margin-top: 22px;
+    margin-bottom: 30px;
+}
+
+.vacancy-header-left > ul > li{
+    margin-bottom: 15px;
+}
+
+.vacancy-header-left > ul{
+    margin-bottom: 30px;
+}
+
+.btns-aplication-contacts{
+    display: flex;
+    gap: 20px;
+}
+
+.btn-aplication{
+    background-color: #2584C9;
+    border-radius: 20px;
+    padding: 20px 0;
+    width: min(100%, 413px);
+    cursor: pointer;
+}
+
+.btn-contacts{
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #2584C9;
+    padding: 20px 0;
+    width: min(100%, 269px);
+    cursor: pointer;
+}
+
+.vacancy-header-right{
+    padding: 30px;
+    border: 1px solid #2584C9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: min(100%, 358px);
+}
+
+.vacancy-description{
+    margin-top: 50px;
+}
+
+.vacancy-description-text{
+    max-width: 762px;
+}
+
+.vacancy-description-locate{
+    margin-top: 100px;
+}
+
+.btns-update-delete{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: min(100%, 305px);
+    margin-top: 60px;
+}
+
+.btn-update{
+    background-color: #2584C9;
+    border-radius: 20px;
+    width: min(100%, 145px);
+    padding: 16px 5px;
+    cursor: pointer;
+}
+
+.btn-delete{
+    background-color: #C8322D;
+    border-radius: 20px;
+    width: min(100%, 145px);
+    padding: 16px 5px;
+    cursor: pointer;
+}
+
+.btns-aplication-contacts-small{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    width: min(100%, 400px);
+    gap: 15px;
+}
+
+.btn-aplication-small{
+    background-color: #2584C9;
+    border-radius: 20px;
+    padding: 17px 10px;
+    width: min(100%, 227px);
+    cursor: pointer;
+}
+
+.btn-contacts-small{
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #2584C9;
+    padding: 17px 10px;
+    width: min(100%, 179px);
+    cursor: pointer;
+}
+
+.card-vacancy-tags{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.card-vacancy-list > li{
+    margin-top: 15px;
+}
+
+.card-vacancy-list-locate{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.related-vacancies{
+    margin-top: 80px;
+}
+
+.related-vacancies > h3{
+    margin-bottom: 40px;
+}
+
+.card-vacancy{
+    padding: 30px;
+    border: 1px solid #2584C9;
+    border-radius: 20px;
+    width: min(100%, 762px);
+    margin-bottom: 30px;
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.registration{
+    height: calc(100vh - 190px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 16px;
+}
+
+.registration-inner{
+    width: min(100%, 400px);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.registration-header{
+    padding: 18px 0;
+    background-color: #2584C9;
+    border-radius: 10px 10px 0 0;
+}
+
+.registration-body{
+    padding-inline: 16px;
+}
+
+.registration-body > h2{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.btns-work-employee > button{
+    width: min(100%, 177.5px);
+    height: 54px;
+    border: 2px solid #CECECE;
+    border-radius: 20px;
+    background-color: white;
+    padding-inline: 7px;
+    cursor: pointer;
+}
+
+.btns-work-employee{
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+}
+
+.registration-form{
+    margin-top: 40px;
+}
+
+.registration-bottom-text{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.input-main{
+    width: min(100%, 364px);
+    height: 41px;
+    border: 1px solid #CECECE;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-submit-reg{
+    width: min(100%, 364px);
+    height: 60px;
+    background-color: #2584C9;
+    border-radius: 20px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.authorization-form{
+    margin-top: 90px;
+}
+
+.btn-submit-auth{
+    width: min(100%, 364px);
+    height: 60px;
+    background-color: #2584C9;
+    border-radius: 20px;
+    margin-top: 140px;
+    cursor: pointer;
+}
+
+.search-field-big{
+    margin-top: 30px;
+}
+
+.search-field-big-form{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-field-big-input{
+    width: min(100%, 999px);
+    border: 1px solid #CECECE;
+    padding: 14px 14px 14px 39.5px;
+    border-radius: 10px;
+}
+
+.glass-second{
+    position: absolute;
+    padding-left: 12.5px; 
+}
+
+.btn-search-big{
+    background-color: #2584C9;
+    border-radius: 10px;
+    padding: 15px 0;
+    width: min(100%, 131px);
+    cursor: pointer;
+}
+
+.search-vacancy-body{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.search-vacancy-right{
+    width: min(100%, 762px);
+    margin-top: 133px;
+}
+
+.search-vacancy-left{
+    min-width: 251px;
+}
+
+.search-vacancy-left > h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.search-vacancy-sort{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.checkbox-input{
+    margin-bottom: 13px;
+    margin-right: 10px;
+    width: 19px;
+    height: 19px;
+    accent-color: #2584C9;
+}
+
+.search-vacancy-filter > form > h4{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-reset{
+    margin-top: 17px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search-vacancy-filter-input{
+    border: 1px solid #CECECE;
+    border-radius: 20px;
+    padding: 8px 13px;
+    width: 170px;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 572px;
+    padding-inline: 16px;
+}
+
+.create-resume-vacancy > form > input{
+    width: 100%;
+    height: 41px;
+    border: 1px solid #CECECE;
+    border-radius: 10px;
+    padding-left: 8px;
+}
+
+.create-resume-vacancy > form > p{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.create-resume-vacancy > form > textarea{
+    min-width: 100%;
+    min-height: 524px;
+    max-width: 100%;
+    max-height: 524px;
+    border: 1px solid #CECECE;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 8px;
+}
+
+.input-file{
+    width: 165px!important; 
+    height: 165px!important; 
+}
+
+.create-resume-vacancy > form > input[type=file]{
+    opacity: 0;
+}
+
+.img-continer{
+    position: absolute;
+    width: 165px; 
+    height: 165px; 
+    background-image: url(/public/images/add-photo.png);
+    z-index: 0;
+}
+
+.resume{
+    margin-top: 50px;
+}
+
+.resume-header{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.resume-header-left{
+    background-image: url(/public/images/user-photo.png);
+    background-repeat: no-repeat;
+    min-width: 227px;
+    height: 227px;
+}
+
+.resume-header-right > h2{
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.resume-header-right > h3{
+    margin-bottom: 30px;
+}
+
+.resume-header-right > p{
+    margin-bottom: 5px;
+}
+
+.resume-body{
+    margin-top: 50px;
+}
+
+.resume-body > p{
+    margin-bottom: 30px;
+}
+
+.application{
+    margin-top: 50px;
+}
+
+.application-body{
+    padding: 30px;
+    border: 1px solid #2584C9;
+    border-radius: 20px;
+    width: min(100%, 762px);
+    display: grid;
+    row-gap: 35px;
+}
+
+@media (max-width: 1120px) {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 320px);
+        justify-content: center;
+        column-gap: 30px;
+    }
+}
+
+@media (max-width: 1015px) {
+    .by-schedule-list{
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(4, 189px);
+    }
+    .about-us > img{
+        width: 50vw;
+    }
+}
+
+@media (max-width: 850px){
+    .by-schedule-list{
+        grid-template-columns: repeat(3, 189px);
+    }
+}
+
+@media (max-width: 800px) {
+    .cards-companies {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        justify-content: space-between;
+        row-gap: 40px;
+    }
+}
+
+@media (max-width:780px) {
+    .about-us{
+        display: grid;
+    }
+    .about-us > img{
+        width: 380px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:771px) {
+    .footer-links {
+        display: grid;
+        justify-content: center;
+        row-gap: 35px;
+    }
+}
+
+@media (max-width:725px) {
+    .btn-create-vacancy{
+        display: none;
+    }
+    .header-links{
+        width: 400px;
+    }
+    .header-btns{
+        gap: 10px;
+    }
+    .cards {
+        column-gap: 30px;
+        grid-template-columns: repeat(2, 264px);
+        justify-content: center;
+    }
+    .industries{
+        display: grid;
+        justify-content: center;
+        row-gap: 0;
+        
+    }
+}
+
+@media (max-width: 680px) {
+    .vacancy-header{
+        display: grid;
+        width: 100vw;
+    }
+    .search-vacancy-body{
+        display: grid;
+    }
+    .search-vacancy-right {
+        width: 90vw;
+    }
+    .search-vacancy-right {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 643px) {
+    .by-schedule-list{
+        grid-template-columns: repeat(2, 190px);
+        justify-content: center;
+    }
+}
+
+@media (max-width: 610px) {
+    .location{
+        display: none;
+    }
+    .header-links {
+        width: 280px;
+    }
+    .header-btns{
+        gap: 7px;
+    }
+    .header-inner{
+        gap: 0;
+    }
+    .cards {
+        column-gap: 0;
+        grid-template-columns: repeat(2, 264px);
+        justify-content: space-between;
+    }
+}
+
+
+@media (max-width: 585px) {
+    .cards {
+        grid-template-columns: repeat(1, 310px);
+        justify-content: center;
+    }
+}
+
+@media (max-width: 545px) {
+    .resume-header{
+        display: grid;
+        justify-content: center;
+    }
+    .resume-header-left{
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 475px) {
+    .footer-inner{
+        display: grid;
+        gap: 35px;
+    }
+    .footer-links{
+        justify-content: space-between;
+        width: 170px;
+    }
+    .btn-search-big{
+        width: min(100%, 87px);
+    }
+}
+
+@media (max-width: 454px) {
+    header{
+        padding: 14px 0;
+    }
+    .header-btns{
+        display: grid;
+        justify-content: center;
+    }
+    .header-inner{
+        gap: 10px;
+    }
+    .header-links{
+        width: 167px;
+    }
+    .by-schedule-list{
+        grid-template-columns: repeat(2, 109px);
+    }
+    .logo > a > img {
+        width: 145px;
+    }
+}
+
+@media (max-width: 428px){
+    .about-us > img {
+        width: 88vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .cards-companies {
+        grid-template-columns: repeat(2, 100px);
+        justify-content: center;
+        column-gap: 40px;
+        row-gap: 40px;
+    }
+    .btns-aplication-contacts {
+        display: grid; 
+    }
+    .btn-contacts {
+        width: min(100%, 305px);
+    }
+    .card-vacancy-tags{
+        display: grid;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 350px) {
+    .cards {
+        grid-template-columns: repeat(1, 264px);
+    }
+    .btns-aplication-contacts-small {
+        display: block;
+    }
+    .btn-aplication-small{
+        width: min(100%, 300px);
+        margin-bottom: 15px;
+    }
+    .btn-contacts-small{
+        width: min(100%, 300px);
+    }
+}
+
+@media (max-width: 337px) {
+    .font-white-37px {
+        font-size: 33px;
+    }
+    .application-body{
+        padding: 16px;
+    }
+}
