@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="vacancy-header-right">
-            <img src="\images\mts.png" alt="">
+            <img src="{{asset('assets\images\mts.png')}}" alt="">
             <h3 class="font-black-19px">Пятерочка</h3>
         </div>
     </div>
@@ -63,7 +63,7 @@
             </div>
             <ul class="card-vacancy-list font-black-16px">
                 <li>Пятерочка</li>
-                <li class="card-vacancy-list-locate"><img src="/images/location-blue.png" alt=""> Челябинск</li>
+                <li class="card-vacancy-list-locate"><img src="{{asset('assets\images\location-blue.png')}}" alt=""> Челябинск</li>
             </ul>
             <div class="btns-aplication-contacts-small">
                 <button class="btn-aplication-small font-white-17px">Откликнуться</button>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="search-field-big wrapper">
         <form action="" method="POST" class="search-field-big-form">
-            <img src="{{asset('images/glass.png')}}" alt="" class="glass-second">
+            <img src="{{asset('assets/images/glass.png')}}" alt="" class="glass-second">
             <input type="text" name="" placeholder="Найти вакансию" class="search-field-big-input font-grey-16px">
             <button type="submit" class="btn-search-big font-white-16px">Найти</button>
         </form>
@@ -85,7 +85,7 @@
                 </div>
                 <ul class="card-vacancy-list font-black-16px">
                     <li>Пятерочка</li>
-                    <li class="card-vacancy-list-locate"><img src="/images/location-blue.png" alt=""> Челябинск</li>
+                    <li class="card-vacancy-list-locate"><img src="{{asset('assets\images\location-blue.png')}}" alt=""> Челябинск</li>
                 </ul>
                 <div class="btns-aplication-contacts-small">
                     <button class="btn-aplication-small font-white-17px">Откликнуться</button>

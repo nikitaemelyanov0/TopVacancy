@@ -218,6 +218,15 @@
     font-size: 20px;
 }
 
+.font-red-17px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: #C8322D;
+    font-size: 17px;
+}
+
 .wrapper{
     max-width: 1172px;
     padding-inline: 16px;
@@ -274,7 +283,7 @@ header{
 }
 
 .main-background{
-    background-image: url(/public/images/main-bg.png);
+    background-image: url(/public/assets/images/main-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -374,6 +383,10 @@ hr{
 
 .card-company{
     text-align: center;
+}
+
+.card-company > h3{
+    margin-top: 10px;
 }
 
 .industries{
@@ -810,7 +823,7 @@ footer{
     position: absolute;
     width: 165px; 
     height: 165px; 
-    background-image: url(/public/images/add-photo.png);
+    background-image: url(/public/assets/images/add-photo.png);
     z-index: 0;
 }
 
@@ -825,7 +838,7 @@ footer{
 }
 
 .resume-header-left{
-    background-image: url(/public/images/user-photo.png);
+    background-image: url(/public/assets/images/user-photo.png);
     background-repeat: no-repeat;
     min-width: 227px;
     height: 227px;
@@ -863,6 +876,45 @@ footer{
     width: min(100%, 762px);
     display: grid;
     row-gap: 35px;
+}
+
+.role-choose{
+    border: 2px solid #2584C9!important;
+}
+
+.burger{
+    cursor: pointer;
+}
+
+.burger-window{
+    margin-top: 198px;
+    margin-left: 47px;
+    position: absolute;
+    width: 194px;
+    text-align: center;
+    background-color: white;
+    padding: 25px 0;
+    border-radius: 20px;
+    border: 1px solid #CECECE;
+    z-index: 1;
+}
+
+.burger-window > ul{
+    display: grid;
+    row-gap: 25px;
+}
+
+.hide{
+    display: none;
+}
+
+input[type=radio] {
+    accent-color: #2584C9;
+}
+
+button:hover{
+    /* opacity: 0.9; */
+    filter: brightness(1.1);
 }
 
 @media (max-width: 1120px) {

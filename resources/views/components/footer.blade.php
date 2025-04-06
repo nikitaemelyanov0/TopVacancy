@@ -1,6 +1,6 @@
 <footer>
     <div class="footer-inner wrapper">
-        <img src="/images/logo.png" alt="">
+        <img src="{{asset('assets//images/logo.png')}}" alt="">
         <div class="footer-links">
             <ul>
                 <li class="font-white-19px">Соискателям</li>
@@ -14,9 +14,9 @@
             <ul>
                 <li class="font-white-19px">Контакты</li>
                 <li class="footer-contacts">
-                    <img src="/images/telegram.png" alt="">
-                    <img src="/images/vk.png" alt="">
-                    <img src="/images/facebook.png" alt="">
+                    <img src="{{asset('assets/images/telegram.png')}}" alt="">
+                    <img src="{{asset('assets/images/vk.png')}}" alt="">
+                    <img src="{{asset('assets/images/facebook.png')}}" alt="">
                 </li>
             </ul>
         </div>

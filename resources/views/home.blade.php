@@ -9,11 +9,11 @@
                 <div class="main-inner">
                     <h1 class="font-white-37px">Найдите работу для себя</h1>
                     <div class="main-searh">
-                        <img src="{{asset('images/glass.png')}}" alt="" class="glass">
+                        <img src="{{asset('assets/images/glass.png')}}" alt="" class="glass">
                         <form action="#" method="post" class="home-search">
                             <input type="text" placeholder="Найти вакансию" class="search-field font-grey-16px">
                             <button type="submit" class="btn-search font-white-16px">Найти</button>
-                        </form>
+                        </form>    
                     </div>
                 </div>
             </div>
@@ -76,27 +76,27 @@
         <h1 class="font-black-20px title-second">Компании</h1>
         <div class="cards-companies">
             <div class="card-company">
-                <img src="/images/perekrestok.png" alt="">
+                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
                 <h3 class="font-light-16px">Перекресток</h3>
             </div>
             <div class="card-company">
-                <img src="/images/perekrestok.png" alt="">
+                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
                 <h3 class="font-light-16px">Перекресток</h3>
             </div>
             <div class="card-company">
-                <img src="/images/perekrestok.png" alt="">
+                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
                 <h3 class="font-light-16px">Перекресток</h3>
             </div>
             <div class="card-company">
-                <img src="/images/perekrestok.png" alt="">
+                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
                 <h3 class="font-light-16px">Перекресток</h3>
             </div>
             <div class="card-company">
-                <img src="/images/perekrestok.png" alt="">
+                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
                 <h3 class="font-light-16px">Перекресток</h3>
             </div>
             <div class="card-company">
-                <img src="/images/perekrestok.png" alt="">
+                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
                 <h3 class="font-light-16px">Перекресток</h3>
             </div>
         </div>
@@ -219,6 +219,6 @@
                     • Работодателям – компаниям любого масштаба, желающим быстро находить квалифицированных сотрудников.</p>
             </div>
         </div>
-        <img src="/images/about-us.png" alt="">
+        <img src="{{asset('assets//images/about-us.png')}}" alt="">
     </section>
 @endsection

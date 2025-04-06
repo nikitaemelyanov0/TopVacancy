@@ -14,7 +14,7 @@
             </div>
             <ul class="card-vacancy-list font-black-16px">
                 <li>Пятерочка</li>
-                <li class="card-vacancy-list-locate"><img src="/images/location-blue.png" alt=""> Челябинск</li>
+                <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt=""> Челябинск</li>
             </ul>
         </div>
         <div class="application-body">
