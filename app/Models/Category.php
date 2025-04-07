@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    public $timestamps = false;
+
     public function vacancies()
     {
-        return $this->hasMany(Vacancy::class);
+        return $this->belongsToMany(Vacancy::class);
     }
 }

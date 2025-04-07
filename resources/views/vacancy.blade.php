@@ -5,13 +5,12 @@
 @section('content')
     <div class="vacancy-header wrapper">
         <div class="vacancy-header-left">
-            <h1 class="font-black-30px">Продавец-кассир </h1>
-            <h2 class="font-black-21px">от 48 000 ₽ за месяц</h2>
+            <h1 class="font-black-30px">{{$vacancy->position}}</h1>
+            <h2 class="font-black-21px">{{$vacancy->salary}}₽ за месяц</h2>
             <ul class="font-black-17px">
-                <li>Опыт работы: не требуется</li>
-                <li>Полная занятость</li>
-                <li>График: 5/2</li>
-                <li>Формат работы: На месте работодателя</li>
+                @foreach($categories as $category) 
+                    <li>{{$category->category_type.': '.$category->category_name}}</li>
+                @endforeach
             </ul>
             <div class="btns-aplication-contacts">
                 <button class="btn-aplication font-white-17px">Откликнуться</button>
@@ -19,32 +18,15 @@
             </div>
         </div>
         <div class="vacancy-header-right">
-            <img src="{{asset('assets\images\mts.png')}}" alt="">
-            <h3 class="font-black-19px">Пятерочка</h3>
+            <img src="{{asset('storage/'.$vacancy->logo)}}" alt="" style="width: 70px">
+            <h3 class="font-black-19px">{{$vacancy->company_name}}</h3>
         </div>
     </div>
     <div class="vacancy-description wrapper">
-        <p class="vacancy-description-text font-black-high-17px">В дружную команду кондитерских требуется продавец-кассир
-            <br>
-            <br>
-            Условия:
-            - З/п оклад + % от продаж ( от 45 000 и выше, выплаты строго без задержек)
-            - График работы 5/2 с 8 до 5
-            - Обеспечим Вас красивой формой
-            Требования:
-            - наличие опыта в продажах станет для вас преимуществом, наличие сан книжки или готовность ее оформить, готовность работать и развиваться.
-            <br>
-            <br>
-            Обязанности:
-            - Продажа готовой продукции, которая производится на предприятии
-            - Выкладка готовой продукции на витрину, следить за ценниками
-            - Обслуживание гостей и помощь в выборе блюд
-            - Быть активным и общительным с посетителями
-            - Содержать рабочее место в чистоте, соблюдение внутренних правил на предприятии.
-        </p>
+        <p class="vacancy-description-text font-black-high-17px">{{$vacancy->description}}</p>
         <p class="vacancy-description-locate font-black-light-18px">
-            Вакансия опубликована 19 февраля 2025 в Челябинске <br>
-            Челябинск, улица Чичерина, 38Б
+            Вакансия опубликована {{$vacancy->created_at}}<br>
+            {{$vacancy->address}}
         </p>
         <div class="btns-update-delete">
             <button class="btn-update font-white-17px">Изменить</button>
@@ -63,7 +45,7 @@
             </div>
             <ul class="card-vacancy-list font-black-16px">
                 <li>Пятерочка</li>
-                <li class="card-vacancy-list-locate"><img src="{{asset('assets\images\location-blue.png')}}" alt=""> Челябинск</li>
+                <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt=""> Челябинск</li>
             </ul>
             <div class="btns-aplication-contacts-small">
                 <button class="btn-aplication-small font-white-17px">Откликнуться</button>

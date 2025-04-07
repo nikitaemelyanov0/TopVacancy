@@ -3,14 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\VacancyController;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/vacancy', function () {
-    return view('vacancy');
-});
+Route::get('/resume/{id}', [ResumeController::class, 'resumeIndex'])->name('resume');
+
+Route::get('/vacancy/{id}', [VacancyController::class, 'vacancyIndex'])->name('vacancy');
 
 Route::get('/registration', [UserController::class, 'registrationIndex'])->name('registration');
 Route::post('/registration', [UserController::class, 'createUser']);
@@ -29,14 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create_resume', [ResumeController::class, 'createResumeIndex'])->name('create_resume');
     Route::post('/create_resume', [ResumeController::class, 'createResume']);
 
-    Route::get('/create_vacancy', function () {
-        return view('create_vacancy');
-    })->name('create_vacancy');
+    Route::get('/create_vacancy', [VacancyController::class, 'createVacancyIndex'])->name('create_vacancy');
+    Route::post('/create_vacancy', [VacancyController::class, 'createVacancy']);
 });
-
-Route::get('/resume', function () {
-    return view('resume');
-})->name('resume');
 
 Route::get('/application', function () {
     return view('application');

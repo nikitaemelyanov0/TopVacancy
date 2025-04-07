@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vacancy extends Model
 {
-    public function category()
+
+    protected $guarded = false;
+
+    public function categories()
     {
         return $this->belongsToMany(Category::class);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Auth;
@@ -32,11 +33,18 @@ class ResumeController extends Controller
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('images', 'public');
         } else {
-            $path = 'assets\images\user-photo.png';
+            $path = 'images/user-photo.png';
         }
         $data['photo'] = $path;
         $data['user_id'] = Auth::id();
-        Resume::create($data);
-        return redirect('/');
+        $resume = Resume::create($data);
+        return redirect('resume/'.$resume->id);
+    }
+
+    public function resumeIndex(Resume $id)
+    {
+        $resume = $id;
+        $user = User::find($resume->user_id);
+        return view('resume', compact(['user', 'resume']));
     }
 }

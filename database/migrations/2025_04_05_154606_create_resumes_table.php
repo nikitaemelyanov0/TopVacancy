@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('profession');
             $table->string('photo');
             $table->string('phone');
-            $table->enum('gender', ['male', 'female']);
+            $table->enum('gender', ['Мужчина', 'Женщина']);
             $table->string('city');
-            $table->dateTime('date_of_birth');
+            $table->date('date_of_birth');
             $table->integer('salary_expectation')->unsigned();
             $table->string('education');
             $table->string('educational_institution');

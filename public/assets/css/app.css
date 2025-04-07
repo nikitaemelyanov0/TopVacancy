@@ -837,9 +837,7 @@ footer{
     gap: 40px;
 }
 
-.resume-header-left{
-    background-image: url(/public/assets/images/user-photo.png);
-    background-repeat: no-repeat;
+.resume-header-left > img{
     min-width: 227px;
     height: 227px;
 }
@@ -887,7 +885,7 @@ footer{
 }
 
 .burger-window{
-    margin-top: 198px;
+    margin-top: 212px;
     margin-left: 47px;
     position: absolute;
     width: 194px;

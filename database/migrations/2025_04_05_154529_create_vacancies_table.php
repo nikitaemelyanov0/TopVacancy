@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('position');
+            $table->string('company_name');
             $table->string('logo');
             $table->string('phone');
             $table->string('address');
