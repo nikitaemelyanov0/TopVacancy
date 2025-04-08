@@ -9,9 +9,19 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/resume/{id}', [ResumeController::class, 'resumeIndex'])->name('resume');
+Route::get('/resume/{id}', [ResumeController::class, 'resumeIndex'])->name('resume.index');
 
-Route::get('/vacancy/{id}', [VacancyController::class, 'vacancyIndex'])->name('vacancy');
+Route::delete('resume/{id}/delete', [ResumeController::class, 'destroy'])->name('resume.destroy');
+
+Route::get('resume/{id}/edit', [ResumeController::class, 'edit'])->name('resume.edit');
+Route::put('resume/{id}/edit', [ResumeController::class, 'update'])->name('resume.update');
+
+Route::get('/vacancy/{id}', [VacancyController::class, 'vacancyIndex'])->name('vacancy.index');
+
+Route::delete('vacancy/{id}/delete', [VacancyController::class, 'destroy'])->name('vacancy.destroy');
+
+Route::get('vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('vacancy/{id}/edit', [VacancyController::class, 'update'])->name('vacancy.update');
 
 Route::get('/registration', [UserController::class, 'registrationIndex'])->name('registration');
 Route::post('/registration', [UserController::class, 'createUser']);
@@ -27,10 +37,10 @@ Route::get('/search_vacancy', function () {
 })->name('search_vacancy');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/create_resume', [ResumeController::class, 'createResumeIndex'])->name('create_resume');
+    Route::get('/create_resume', [ResumeController::class, 'createResumeIndex'])->name('create_resume.index');
     Route::post('/create_resume', [ResumeController::class, 'createResume']);
 
-    Route::get('/create_vacancy', [VacancyController::class, 'createVacancyIndex'])->name('create_vacancy');
+    Route::get('/create_vacancy', [VacancyController::class, 'createVacancyIndex'])->name('create_vacancy.index');
     Route::post('/create_vacancy', [VacancyController::class, 'createVacancy']);
 });
 

@@ -12,7 +12,7 @@ class User extends Authenticatable
 
     protected $guarded = false;
 
-    public function vacancy()
+    public function vacancies()
     {
         return $this->hasMany(Vacancy::class);
     }

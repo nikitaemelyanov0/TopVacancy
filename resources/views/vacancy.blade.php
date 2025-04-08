@@ -8,17 +8,17 @@
             <h1 class="font-black-30px">{{$vacancy->position}}</h1>
             <h2 class="font-black-21px">{{$vacancy->salary}}₽ за месяц</h2>
             <ul class="font-black-17px">
-                @foreach($categories as $category) 
+                @foreach($categories as $category)
                     <li>{{$category->category_type.': '.$category->category_name}}</li>
                 @endforeach
             </ul>
             <div class="btns-aplication-contacts">
                 <button class="btn-aplication font-white-17px">Откликнуться</button>
-                 <button class="btn-contacts font-blue-17px">Контакты</button>
+                <button class="btn-contacts font-blue-17px">Контакты</button>
             </div>
         </div>
         <div class="vacancy-header-right">
-            <img src="{{asset('storage/'.$vacancy->logo)}}" alt="" style="width: 70px">
+            <img src="{{asset('public/storage/'.$vacancy->logo)}}" alt="" style="width: 70px">
             <h3 class="font-black-19px">{{$vacancy->company_name}}</h3>
         </div>
     </div>
@@ -28,10 +28,16 @@
             Вакансия опубликована {{$vacancy->created_at}}<br>
             {{$vacancy->address}}
         </p>
-        <div class="btns-update-delete">
-            <button class="btn-update font-white-17px">Изменить</button>
-            <button class="btn-delete font-white-17px">Удалить</button>
-        </div>
+        @if($currentuser->id==$vacancy->user_id)
+            <div class="btns-update-delete">
+                <a href="{{route('vacancy.edit', $vacancy->id)}}" class="btn-update font-white-17px">Изменить</a>
+                <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn-delete font-white-17px" type="submit">Удалить</button>
+                </form>
+            </div>
+        @endif
     </div>
     <div class="related-vacancies wrapper">
         <h3 class="font-black-20px">Похожие вакансии</h3>

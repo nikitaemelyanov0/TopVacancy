@@ -1,4 +1,4 @@
-@extends('layout')
+{{-- @extends('layout')
 
 @section('title', 'Отклики')
 
@@ -46,5 +46,7 @@
         </div>
    </div>
 @endsection
-
-
+ --}}
+@foreach($currentuser->vacancies as $vacancy)
+    {{$vacancy->position}}
+@endforeach

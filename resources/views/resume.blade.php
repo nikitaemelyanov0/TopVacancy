@@ -3,10 +3,10 @@
 @section('title', 'Резюме')
 
 @section('content')
-   <div class="resume wrapper">
+    <div class="resume wrapper">
         <div class="resume-header">
             <div class="resume-header-left">
-                <img src="{{ asset('storage/'.$resume->photo) }}" alt="">
+                <img src="{{ asset('storage/'.$resume->photo) }}" alt="" width="227px">
             </div>
             <div class="resume-header-right">
                 <h1 class="font-black-23px">{{$resume->profession}}</h1>
@@ -23,9 +23,15 @@
             <p class="font-black-high-17px">Почта: {{$user->email}}</p>
             <p class="font-black-high-17px">Обо мне: {{$resume->description}}</p>
         </div>
-        <div class="btns-update-delete">
-            <button class="btn-update font-white-17px">Изменить</button>
-            <button class="btn-delete font-white-17px">Удалить</button>
-        </div>
-   </div>
+        @if($currentuser->id==$resume->user_id)
+            <div class="btns-update-delete">
+                <a href="{{route('resume.edit', $resume->id)}}" class="btn-update font-white-17px">Изменить</a>
+                <form method="POST" action="{{route('resume.destroy', $resume->id)}}" style="width: 140px">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn-delete font-white-17px" type="submit">Удалить</button>
+                </form>
+            </div>
+        @endif
+    </div>
 @endsection

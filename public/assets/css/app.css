@@ -540,6 +540,7 @@ footer{
     width: min(100%, 145px);
     padding: 16px 5px;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-delete{
@@ -548,6 +549,7 @@ footer{
     width: min(100%, 145px);
     padding: 16px 5px;
     cursor: pointer;
+    text-align: center;
 }
 
 .btns-aplication-contacts-small{
