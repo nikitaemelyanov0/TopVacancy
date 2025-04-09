@@ -2,12 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\ResumeController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [VacancyController::class, 'vacanciesAtHome'])->name('home');
 
 Route::get('/resume/{id}', [ResumeController::class, 'resumeIndex'])->name('resume.index');
 
@@ -42,10 +41,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/create_vacancy', [VacancyController::class, 'createVacancyIndex'])->name('create_vacancy.index');
     Route::post('/create_vacancy', [VacancyController::class, 'createVacancy']);
-});
 
-Route::get('/application', function () {
-    return view('application');
-})->name('application');
+    Route::get('/application',[ApplicationController::class, 'applicationIndex'])->name('application.index');
+    Route::post('/application/{id}',[ApplicationController::class, 'makeApplication'])->name('application.store');
+});
 
 Route::get('logout', [UserController:: class, 'logout'])->name('logout');

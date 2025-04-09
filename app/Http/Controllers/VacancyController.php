@@ -12,6 +12,9 @@ class VacancyController extends Controller
 
     public function createVacancyIndex()
     {
+        if (Auth::user()->role=='applicant') {
+            return redirect('/');
+        }
         $vacancy = new Vacancy();
         $categories = Category::all();
         return view('create_vacancy', compact(['vacancy', 'categories']));
@@ -64,11 +67,8 @@ class VacancyController extends Controller
     public function edit($id)
     {
         $vacancy = Vacancy::findOrFail($id);
-        if($vacancy->user_id==Auth::id()) {
-            $categories = Category::all();
-            return view('create_vacancy', compact('vacancy', 'categories'));
-        }
-        else return redirect('/');
+        $categories = Category::all();
+        return view('create_vacancy', compact('vacancy', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -102,5 +102,10 @@ class VacancyController extends Controller
         }
 
         return redirect('vacancy/'.$vacancy->id);
+    }
+
+    public function vacanciesAtHome() {
+        $vacancies = Vacancy::orderBy('created_at', 'desc')->take(8)->get();
+        return view('home', compact('vacancies'));
     }
 }

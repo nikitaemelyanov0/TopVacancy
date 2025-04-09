@@ -13,12 +13,15 @@
                 @endforeach
             </ul>
             <div class="btns-aplication-contacts">
-                <button class="btn-aplication font-white-17px">Откликнуться</button>
+                <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 413px);">
+                    @csrf
+                    <button class="btn-aplication font-white-17px" type="submit">Откликнуться</button>
+                </form>
                 <button class="btn-contacts font-blue-17px">Контакты</button>
             </div>
         </div>
         <div class="vacancy-header-right">
-            <img src="{{asset('public/storage/'.$vacancy->logo)}}" alt="" style="width: 70px">
+            <img src="{{asset('storage/'.$vacancy->logo)}}" alt="" style="width: 70px">
             <h3 class="font-black-19px">{{$vacancy->company_name}}</h3>
         </div>
     </div>
@@ -28,15 +31,17 @@
             Вакансия опубликована {{$vacancy->created_at}}<br>
             {{$vacancy->address}}
         </p>
-        @if($currentuser->id==$vacancy->user_id)
-            <div class="btns-update-delete">
-                <a href="{{route('vacancy.edit', $vacancy->id)}}" class="btn-update font-white-17px">Изменить</a>
-                <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn-delete font-white-17px" type="submit">Удалить</button>
-                </form>
-            </div>
+        @if($currentuser!=null)
+            @if($currentuser->id==$vacancy->user_id)
+                <div class="btns-update-delete">
+                    <a href="{{route('vacancy.edit', $vacancy->id)}}" class="btn-update font-white-17px">Изменить</a>
+                    <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn-delete font-white-17px" type="submit">Удалить</button>
+                    </form>
+                </div>
+            @endif
         @endif
     </div>
     <div class="related-vacancies wrapper">

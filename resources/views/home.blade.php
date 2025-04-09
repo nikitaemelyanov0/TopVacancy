@@ -22,83 +22,28 @@
     <section class="new-vacancies wrapper">
         <h1 class="font-black-20px title">Новые вакансии</h1>
         <div class="cards">
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Продавец-кассир</h2>
-                <p class="font-black-17px">от 48 000 ₽</p>
-                <hr>    
-                <p class="font-black-15px">Пятерочка, Челябинск</p>
-            </div>
+            @foreach($vacancies as $vacancy)
+                <a href="{{route('vacancy.index', $vacancy->id)}}">
+                    <div class="card">
+                        <h2 class="font-black-18px">{{$vacancy->position}}</h2>
+                        <p class="font-black-17px">{{$vacancy->salary}}₽ в месяц</p>
+                        <hr>    
+                        <p class="font-black-15px">{{$vacancy->company_name.', '.$vacancy->address}}</p>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </section>
     <section class="companies wrapper">
         <h1 class="font-black-20px title-second">Компании</h1>
         <div class="cards-companies">
-            <div class="card-company">
-                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
-                <h3 class="font-light-16px">Перекресток</h3>
-            </div>
-            <div class="card-company">
-                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
-                <h3 class="font-light-16px">Перекресток</h3>
-            </div>
-            <div class="card-company">
-                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
-                <h3 class="font-light-16px">Перекресток</h3>
-            </div>
-            <div class="card-company">
-                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
-                <h3 class="font-light-16px">Перекресток</h3>
-            </div>
-            <div class="card-company">
-                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
-                <h3 class="font-light-16px">Перекресток</h3>
-            </div>
-            <div class="card-company">
-                <img src="{{asset('assets/images/perekrestok.png')}}" alt="">
-                <h3 class="font-light-16px">Перекресток</h3>
-            </div>
+
+            @foreach($vacancies->take(6) as $vacancy)
+                <div class="card-company">
+                    <img src="{{asset('storage/'.$vacancy->logo)}}" alt="">
+                    <h3 class="font-light-16px">{{$vacancy->company_name}}</h3>
+                </div>
+            @endforeach
         </div>
     </section>
     <section class="work-by-profession wrapper">

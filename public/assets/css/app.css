@@ -254,6 +254,7 @@ header{
 }
 
 .header-btns{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -876,6 +877,7 @@ footer{
     width: min(100%, 762px);
     display: grid;
     row-gap: 35px;
+    margin-bottom: 40px;
 }
 
 .role-choose{
@@ -888,8 +890,8 @@ footer{
 
 .burger-window{
     margin-top: 212px;
-    margin-left: 47px;
     position: absolute;
+    right: 0;
     width: 194px;
     text-align: center;
     background-color: white;
@@ -915,6 +917,11 @@ input[type=radio] {
 button:hover{
     /* opacity: 0.9; */
     filter: brightness(1.1);
+}
+
+.a-vacancy {
+    display: block;
+    width: min(100%, 762px);
 }
 
 @media (max-width: 1120px) {
@@ -974,6 +981,9 @@ button:hover{
     .btn-create-vacancy{
         display: none;
     }
+    .show{
+        display: block;
+    }
     .header-links{
         width: 400px;
     }
@@ -1022,6 +1032,9 @@ button:hover{
     }
     .header-links {
         width: 280px;
+    }
+    .header-links-second {
+        width: 194px!important;
     }
     .header-btns{
         gap: 7px;
@@ -1072,9 +1085,15 @@ button:hover{
     header{
         padding: 14px 0;
     }
+    .header-second{
+        padding: 27px 0;
+    }
     .header-btns{
         display: grid;
         justify-content: center;
+    }
+    .header-btns-second {
+        display: flex;
     }
     .header-inner{
         gap: 10px;
@@ -1087,6 +1106,9 @@ button:hover{
     }
     .logo > a > img {
         width: 145px;
+    }
+    .logo-big{
+        width: 170px!important;
     }
 }
 
@@ -1112,6 +1134,15 @@ button:hover{
     .card-vacancy-tags{
         display: grid;
         gap: 15px;
+    }
+}
+
+@media (max-width: 370px) {
+    .show {
+        display: none;
+    }
+    .header-links-second{
+        width: 47px!important;
     }
 }
 

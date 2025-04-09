@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,17 +21,18 @@ class UserController extends Controller
         $data = $request->validate([
             'user_name' => 'required',
             'email' => 'required|email',
-            'password' => ['required', 'min:6', 'confirmed'],
+            'password' => 'required|min:6',
+            'password_repeat' => 'same:password',
             'role' => 'required'
         ]);
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
-        $datasecond = $request->validate([
+        $data = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
-        if(Auth::attempt($datasecond)){
+        if(Auth::attempt($data)){
             $request->session()->regenerate();
             return redirect('/');
         }

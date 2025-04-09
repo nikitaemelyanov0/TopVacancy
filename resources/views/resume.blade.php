@@ -23,15 +23,17 @@
             <p class="font-black-high-17px">Почта: {{$user->email}}</p>
             <p class="font-black-high-17px">Обо мне: {{$resume->description}}</p>
         </div>
-        @if($currentuser->id==$resume->user_id)
-            <div class="btns-update-delete">
-                <a href="{{route('resume.edit', $resume->id)}}" class="btn-update font-white-17px">Изменить</a>
-                <form method="POST" action="{{route('resume.destroy', $resume->id)}}" style="width: 140px">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn-delete font-white-17px" type="submit">Удалить</button>
-                </form>
-            </div>
+        @if($currentuser!=null)
+            @if($currentuser->id==$resume->user_id)
+                <div class="btns-update-delete">
+                    <a href="{{route('resume.edit', $resume->id)}}" class="btn-update font-white-17px">Изменить</a>
+                    <form method="POST" action="{{route('resume.destroy', $resume->id)}}" style="width: 140px">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn-delete font-white-17px" type="submit">Удалить</button>
+                    </form>
+                </div>
+            @endif
         @endif
     </div>
 @endsection

@@ -12,6 +12,9 @@ class ResumeController extends Controller
 
     public function createResumeIndex()
     {
+        if (Auth::user()->role=='employer') {
+            return redirect('/');
+        }
         $resume = new Resume();
         return view('create_resume', compact('resume'));
     }
