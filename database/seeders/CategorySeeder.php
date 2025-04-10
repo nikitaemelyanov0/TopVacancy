@@ -23,7 +23,7 @@ class CategorySeeder extends Seeder
             ['category_name' => 'Рабочий персонал', 'category_type' => 'Отрасль'],
             ['category_name' => 'Розничная торговля', 'category_type' => 'Отрасль'],
             ['category_name' => 'Сельское хозяйство', 'category_type' => 'Отрасль'],
-            ['category_name' => 'Спортивные клубы, фитнес, салоны красоты', 'category_type' => 'Отрасль'],
+            ['category_name' => 'Спортивные клубы, фитнес', 'category_type' => 'Отрасль'],
             ['category_name' => 'Стратегия, инвестиции, консалтинг', 'category_type' => 'Отрасль'],
             ['category_name' => 'Автомобильный бизнес', 'category_type' => 'Отрасль'],
             ['category_name' => 'Административный персонал', 'category_type' => 'Отрасль'],

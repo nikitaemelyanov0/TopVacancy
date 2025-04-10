@@ -12,7 +12,8 @@ class ResumeController extends Controller
 
     public function createResumeIndex()
     {
-        if (Auth::user()->role=='employer') {
+        $currentuser = Auth::user();
+        if ($currentuser->role=='employer' || $currentuser->resume) {
             return redirect('/');
         }
         $resume = new Resume();

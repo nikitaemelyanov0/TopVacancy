@@ -31,9 +31,8 @@ Route::post('/authorization', [UserController::class, 'loginPost']);
 Route::get('delete_user', [UserController::class, 'delete_user']);
 Route::post('delete_user', [UserController::class, 'delete_user'])->name('delete_user');
 
-Route::get('/search_vacancy', function () {
-    return view('search_vacancy');
-})->name('search_vacancy');
+Route::get('/search_vacancy',[VacancyController::class, 'searchVacancy'])->name('search_vacancy');
+Route::get('/search_vacancy/{company}',[VacancyController::class, 'searchCompany'])->name('search_company');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/create_resume', [ResumeController::class, 'createResumeIndex'])->name('create_resume.index');

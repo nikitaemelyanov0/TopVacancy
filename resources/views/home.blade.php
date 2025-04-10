@@ -10,8 +10,8 @@
                     <h1 class="font-white-37px">Найдите работу для себя</h1>
                     <div class="main-searh">
                         <img src="{{asset('assets/images/glass.png')}}" alt="" class="glass">
-                        <form action="#" method="post" class="home-search">
-                            <input type="text" placeholder="Найти вакансию" class="search-field font-grey-16px">
+                        <form action="{{route('search_vacancy')}}" method="GET" class="home-search">
+                            <input type="text" placeholder="Найти вакансию" class="search-field font-grey-16px" name="position">
                             <button type="submit" class="btn-search font-white-16px">Найти</button>
                         </form>    
                     </div>
@@ -37,12 +37,11 @@
     <section class="companies wrapper">
         <h1 class="font-black-20px title-second">Компании</h1>
         <div class="cards-companies">
-
             @foreach($vacancies->take(6) as $vacancy)
-                <div class="card-company">
+                <a href="{{route('search_company', $vacancy->company_name)}}"><div class="card-company">
                     <img src="{{asset('storage/'.$vacancy->logo)}}" alt="">
                     <h3 class="font-light-16px">{{$vacancy->company_name}}</h3>
-                </div>
+                </div></a>
             @endforeach
         </div>
     </section>
@@ -102,52 +101,28 @@
     <section class="work-by-industry wrapper">
         <h1 class="font-black-20px title-second">Работа по отраслям</h1>
         <div class="industries">
-            <ul class="font-light-16px">
-                <li>Медицина, фармацевтика</li>
-                <li>Наука, образование</li>
-                <li>Продажи, обслуживание клиентов</li>
-                <li>Производство, сервисное обслуживание</li>
-                <li>Рабочий персонал</li>
-                <li>Розничная торговля</li>
-                <li>Сельское хозяйство</li>
-                <li>Спортивные клубы, фитнес, салоны красоты</li>
-                <li>Стратегия, инвестиции, консалтинг</li>
-            </ul>
-            <ul class="font-light-16px">
-                <li>Автомобильный бизнес</li>
-                <li>Административный персонал</li>
-                <li>Безопасность</li>
-                <li>Высший и средний менеджмент</li>
-                <li>Добыча сырья</li>
-                <li>Домашний, обслуживающий персонал</li>
-                <li>Закупки</li>
-                <li>Информационные технологии</li>
-                <li>Искусство, развлечения, массмедиа</li>
-            </ul>
-            <ul class="font-light-16px">
-                <li>Маркетинг, реклама, PR</li>
-                <li>Страхование</li>
-                <li>Строительство, недвижимость</li>
-                <li>Транспорт, логистика, перевозки</li>
-                <li>Туризм, гостиницы, рестораны</li>
-                <li>Управление персоналом, тренинги</li>
-                <li>Финансы, бухгалтерия</li>
-                <li>Юристы</li>
-            </ul>
+            <ul>
+                @foreach($categories as $category)
+                    @if($category->category_type=='Отрасль')
+                        @if($category->id==16 || $category->id==25)
+                            <ul>
+                        @endif
+                        <li class="industries-li"><a href="{{route('search_vacancy', 'categories%5B%5D='.$category->id)}}" class="font-light-16px">{{$category->category_name}}</a></li>
+                        @if($category->id==15 || $category->id==24)
+                            </ul>
+                        @endif
+                    @endif
+                @endforeach
         </div>
     </section>
     <section class="by-schedule wrapper">
         <h1 class="font-black-20px title-second">По графику</h1>
-        <ul class="by-schedule-list font-light-16px">
-            <li>Работа вахтой</li>
-            <li>1 через 3</li>
-            <li>2 через 2</li>
-            <li>1 через 1</li>
-            <li>1 через 2</li>
-            <li>1 через 4</li>
-            <li>5 через 2</li>
-            <li>Сменный график</li>
-            <li>Неполный рабочий день</li>
+        <ul class="by-schedule-list">
+            @foreach($categories as $category)
+                @if($category->category_type=='График работы')
+                    <li><a href="{{route('search_vacancy', 'categories%5B%5D='.$category->id)}}" class="font-light-16px">{{$category->category_name}}</a></li>
+                @endif
+            @endforeach
         </ul>
     </section>
     <section class="about-us wrapper">

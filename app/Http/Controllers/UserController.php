@@ -21,18 +21,17 @@ class UserController extends Controller
         $data = $request->validate([
             'user_name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6',
-            'password_repeat' => 'same:password',
+            'password' => ['required', 'min:6', 'confirmed'],
             'role' => 'required'
         ]);
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
-        $data = $request->validate([
+        $datasecond = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
-        if(Auth::attempt($data)){
+        if(Auth::attempt($datasecond)){
             $request->session()->regenerate();
             return redirect('/');
         }
@@ -67,5 +66,4 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect('/');
     }
-
 }

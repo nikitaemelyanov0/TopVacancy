@@ -106,6 +106,41 @@ class VacancyController extends Controller
 
     public function vacanciesAtHome() {
         $vacancies = Vacancy::orderBy('created_at', 'desc')->take(8)->get();
-        return view('home', compact('vacancies'));
+        $categories = Category::all();
+        return view('home', compact('vacancies', 'categories'));
+    }
+
+    public function searchVacancy(Request $request) {
+        $query = Vacancy::query();
+    
+        if ($request->has('position')) {
+            $query->where('position', 'like', '%'.$request->position.'%');
+        }
+        
+        if ($request->has('categories')) {
+            $query->whereHas('categories', function($q) use ($request) {
+                $q->where('categories.id', $request->categories);
+            });
+        }
+        
+        if ($request->salary!=null) {
+            if($request->salary)
+            $query->where('salary', '>=', $request->salary);
+        }
+
+        if ($request->has('address')) {
+            $query->where('address', 'like', '%'.$request->address.'%');
+        }
+
+        $vacancies = $query->paginate(10);
+        $categories = Category::all();
+
+        return view('search_vacancy', compact('categories', 'vacancies'));
+    }
+
+    public function searchCompany($company){
+        $vacancies = Vacancy::where('company_name', '=', $company)->get();
+        $categories = Category::all();
+        return view('search_vacancy', compact('categories', 'vacancies'));
     }
 }

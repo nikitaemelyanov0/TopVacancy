@@ -275,6 +275,10 @@ header{
     cursor: pointer;
 }
 
+.btn-blue:hover{
+    filter: brightness(1.0);
+}
+
 .btn-white{
     background-color: #ffffff;
     border-radius: 20px;
@@ -396,8 +400,8 @@ hr{
     gap: 25px;
 }
 
-.industries > ul > li{
-    margin-bottom: 14px;
+.industries-li{
+    margin-bottom: 20px;
 }
 
 .by-schedule-list{
@@ -765,7 +769,7 @@ footer{
     accent-color: #2584C9;
 }
 
-.search-vacancy-filter > form > h4{
+.search-vacancy-filter > h4{
     margin-top: 30px;
     margin-bottom: 20px;
 }
@@ -915,7 +919,6 @@ input[type=radio] {
 }
 
 button:hover{
-    /* opacity: 0.9; */
     filter: brightness(1.1);
 }
 
