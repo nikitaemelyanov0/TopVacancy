@@ -3,7 +3,7 @@
 @section('title', 'Отклики')
 
 @section('content')
-   <div class="application wrapper">
+   <div class="application wrapper" style="min-height: 100vh">
         @foreach($currentuser->vacancies as $vacancy)
             <a href="{{route('vacancy.index', $vacancy->id)}}" class="a-vacancy"><div class="card-vacancy">
                 <h4 class="font-black-23px">{{$vacancy->position}}</h4>

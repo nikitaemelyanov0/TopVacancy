@@ -20,9 +20,13 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'user_name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => ['required', 'min:6', 'confirmed'],
             'role' => 'required'
+        ],[
+            'email.unique' => 'Пользователь с таким email уже существует',
+            'password.min' => 'Пароль должен содержать минимум 6 символов',
+            'password.confirmed' => 'Пароли не совпадают',
         ]);
         $data['password'] = Hash::make($data['password']);
         User::create($data);
@@ -52,7 +56,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/');
         }
-        return back()->with(['fail'=>true]);
+        return back()->with('error', 'Неверно набран email или пароль');
     }
 
     public function logout(Request $request) {

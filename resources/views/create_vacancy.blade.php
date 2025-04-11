@@ -11,9 +11,15 @@
             @endif
             <p class="font-black-18px">Название вакансии</p>
             <input type="text" class="font-black-16px" name="position" value="{{ old('position', $vacancy->position ?? '') }}"> <br>
+            @error('position')
+                <em class="font-red-small">{{$message}}</em>
+            @enderror
 
             <p class="font-black-18px">Название компании</p>
             <input type="text" class="font-black-16px" name="company_name" value="{{ old('company_name', $vacancy->company_name ?? '') }}"> <br>
+            @error('company_name')
+                <em class="font-red-small">{{$message}}</em>
+            @enderror
 
             <p class="font-black-18px">Логотип компании</p>
             <div class="img-continer">
@@ -23,12 +29,21 @@
 
             <p class="font-black-18px">Номер телефона</p>
             <input type="text" class="font-black-16px" name="phone" value="{{ old('phone', $vacancy->phone ?? '') }}"> <br>
+            @error('phone')
+                <em class="font-red-small">{{$message}}</em>
+            @enderror
 
             <p class="font-black-18px">Адрес работы</p>
             <input type="text" class="font-black-16px" name="address" value="{{ old('address', $vacancy->address ?? '') }}"> <br>
+            @error('address')
+                <em class="font-red-small">{{$message}}</em>
+            @enderror
 
             <p class="font-black-18px">Зарплата</p>
             <input type="text" class="font-black-16px" name="salary" value="{{ old('salary', $vacancy->salary ?? '') }}"> <br>
+            @error('salary')
+                <em class="font-red-small">{{$message}}</em>
+            @enderror
 
             <p class="font-black-18px">Подработка</p>
             @foreach($categories as $category)
@@ -93,9 +108,12 @@
             @endforeach
 
             <p class="font-black-18px">Расскажите о вакансии</p>
-            <textarea type="text" class="font-black-16px" name="description">{{ old('description', $vacancy->description ?? '') }}</textarea> <br>
-
-            <button type="submit" class="btn-update font-white-17px">Сохранить</button>
+            <textarea type="text" class="font-black-16px" name="description">{{ old('description', $vacancy->description ?? '') }}</textarea>
+            @error('description')
+                <em class="font-red-small">{{$message}}</em>
+            @enderror
+            <br>
+            <button type="submit" class="btn-update font-white-17px" style="margin-top: 50px">Сохранить</button>
         </form>
     </div>
 @endsection

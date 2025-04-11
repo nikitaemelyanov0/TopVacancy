@@ -9,13 +9,13 @@
                 <h1 class="font-white-18px">Авторизация</h1>
             </div>
             <div class="registration-body">
-                @if(session()->has('fail'))
-                    <p class="font-red-17px" style="margin-top: 20px">Неверно набран email или пароль</p>
-                @endif
                 <form action="" method="post" class="authorization-form">
                     @csrf
-                    <input type="email" placeholder="Email" name="email" class="input-main font-grey-light-16px">
-                    <input type="password" placeholder="Пароль" name="password" class="input-main font-grey-light-16px">
+                    <input type="email" placeholder="Email" name="email" class="input-main font-grey-light-16px" value="{{old('email')}}">
+                    <input type="password" placeholder="Пароль" name="password" class="input-main font-grey-light-16px" value="{{old('password')}}">
+                    @if(session('error'))
+                        <p class="font-red-small">{{session('error')}}</p>
+                    @endif
                     <button type="submit" class="btn-submit-auth font-white-17px">Отправить</button>
                 </form>
                 <div class="registration-bottom-text">

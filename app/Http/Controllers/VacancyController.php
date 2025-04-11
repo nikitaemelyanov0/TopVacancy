@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class VacancyController extends Controller
 {
@@ -27,10 +28,19 @@ class VacancyController extends Controller
             'position' => 'required',
             'company_name' => 'required',
             'logo' => 'nullable',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'address' => 'required',
-            'salary' => 'required',
+            'salary' => 'required|numeric',
             'description' => 'required'
+        ], [
+            'position.required' => 'Заполните это поле',
+            'company_name.required' => 'Заполните это поле',
+            'phone.required' => 'Заполните это поле',
+            'phone.numeric' => 'Введите номер телефона',
+            'address.required' => 'Заполните это поле',
+            'salary.required' => 'Заполните это поле',
+            'salary.numeric' => 'Поле должно быть числом',
+            'description.required' => 'Заполните это поле'
         ]);
         if ($request->hasFile('logo')) {
             $path = $request->file('logo')->store('images', 'public');
@@ -54,7 +64,9 @@ class VacancyController extends Controller
         $vacancy = $id;
         $categories = $vacancy->categories;
 
-        return view('vacancy', compact(['categories', 'vacancy']));
+        $vacancies = Vacancy::Where('position', 'like', '%'.$vacancy->position.'%')->get();
+
+        return view('vacancy', compact(['categories', 'vacancy', 'vacancies']));
     }
 
     public function destroy($id)
@@ -80,10 +92,19 @@ class VacancyController extends Controller
             'position' => 'required',
             'company_name' => 'required',
             'logo' => 'nullable',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'address' => 'required',
             'salary' => 'required',
             'description' => 'required'
+        ], [
+            'position.required' => 'Заполните это поле',
+            'company_name.required' => 'Заполните это поле',
+            'phone.required' => 'Заполните это поле',
+            'phone.numeric' => 'Введите номер телефона',
+            'address.required' => 'Заполните это поле',
+            'salary.required' => 'Заполните это поле',
+            'salary.numeric' => 'Поле должно быть числом',
+            'description.required' => 'Заполните это поле'
         ]);
         if ($request->hasFile('logo')) {
             $path = $request->file('logo')->store('images', 'public');
@@ -107,25 +128,28 @@ class VacancyController extends Controller
     public function vacanciesAtHome() {
         $vacancies = Vacancy::orderBy('created_at', 'desc')->take(8)->get();
         $categories = Category::all();
-        return view('home', compact('vacancies', 'categories'));
+        $companies = Vacancy::select('vacancies.*')
+        ->join(DB::raw('(SELECT MIN(id) as id FROM vacancies GROUP BY company_name) as grouped'), 'vacancies.id', '=', 'grouped.id')
+        ->get();
+        return view('home', compact('vacancies', 'categories', 'companies'));
     }
 
     public function searchVacancy(Request $request) {
         $query = Vacancy::query();
-    
+
         if ($request->has('position')) {
             $query->where('position', 'like', '%'.$request->position.'%');
         }
-        
+
         if ($request->has('categories')) {
             $query->whereHas('categories', function($q) use ($request) {
                 $q->where('categories.id', $request->categories);
             });
         }
-        
+
         if ($request->salary!=null) {
             if($request->salary)
-            $query->where('salary', '>=', $request->salary);
+                $query->where('salary', '>=', $request->salary);
         }
 
         if ($request->has('address')) {

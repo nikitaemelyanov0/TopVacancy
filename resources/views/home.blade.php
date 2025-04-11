@@ -24,7 +24,7 @@
         <div class="cards">
             @foreach($vacancies as $vacancy)
                 <a href="{{route('vacancy.index', $vacancy->id)}}">
-                    <div class="card">
+                    <div class="card hover">
                         <h2 class="font-black-18px">{{$vacancy->position}}</h2>
                         <p class="font-black-17px">{{$vacancy->salary}}₽ в месяц</p>
                         <hr>    
@@ -37,10 +37,10 @@
     <section class="companies wrapper">
         <h1 class="font-black-20px title-second">Компании</h1>
         <div class="cards-companies">
-            @foreach($vacancies->take(6) as $vacancy)
-                <a href="{{route('search_company', $vacancy->company_name)}}"><div class="card-company">
-                    <img src="{{asset('storage/'.$vacancy->logo)}}" alt="">
-                    <h3 class="font-light-16px">{{$vacancy->company_name}}</h3>
+            @foreach($companies->take(6) as $company)
+                <a href="{{route('search_company', $company->company_name)}}"><div class="card-company hover">
+                    <img src="{{asset('storage/'.$company->logo)}}" alt="" style="height: 63px">
+                    <h3 class="font-light-16px">{{$company->company_name}}</h3>
                 </div></a>
             @endforeach
         </div>

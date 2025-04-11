@@ -26,7 +26,7 @@
         @if($currentuser!=null)
             @if($currentuser->id==$resume->user_id)
                 <div class="btns-update-delete">
-                    <a href="{{route('resume.edit', $resume->id)}}" class="btn-update font-white-17px">Изменить</a>
+                    <a href="{{route('resume.edit', $resume->id)}}" class="btn-update font-white-17px hover">Изменить</a>
                     <form method="POST" action="{{route('resume.destroy', $resume->id)}}" style="width: 140px">
                         @csrf
                         @method('DELETE')

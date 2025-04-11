@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="search-field-big wrapper">
-        <form action="{{route('search_vacancy')}}" method="GET" class="search-field-big-form ">
+        <form action="{{route('search_vacancy')}}" method="GET" class="search-field-big-form">
             <img src="{{asset('assets/images/glass.png')}}" alt="" class="glass-second">
             <input type="text" name="position" placeholder="Найти вакансию" class="search-field-big-input font-grey-16px" value="{{request('position')}}">
             <button type="submit" class="btn-search-big font-white-16px">Найти</button>
@@ -20,7 +20,7 @@
                     <h4 class="font-black-18px">Подработка</h4>
                     @foreach($categories as $category)
                         @if($category->category_type=='Подработка')
-                            <label class="font-light-16px" for="{{$category->id}}"><input type="checkbox" class="checkbox-input" name="categories[]" value="{{$category->id}}" @checked(collect(request('categories'))->contains($category->id))>{{$category->category_name}}</label> <br>
+                            <label class="font-light-16px" class="font-light-16px" for="{{$category->id}}"><input type="checkbox" class="checkbox-input" name="categories[]" value="{{$category->id}}" @checked(collect(request('categories'))->contains($category->id))>{{$category->category_name}}</label> <br>
                         @endif
                     @endforeach
 
@@ -64,7 +64,7 @@
                             <label class="font-light-16px" for="{{$category->id}}"><input type="checkbox" class="checkbox-input" name="categories[]" value="{{$category->id}}" @checked(collect(request('categories'))->contains($category->id))>{{$category->category_name}}</label> <br>
                         @endif
                     @endforeach
-                    <a href="{{route('search_vacancy')}}" class="font-blue-16px btn-reset">Сбросить все</a>
+                    <a href="{{route('search_vacancy')}}" class="font-blue-16px btn-reset hover">Сбросить все</a>
                 </form>
             </div>
         </div>
@@ -85,15 +85,23 @@
                     <ul class="card-vacancy-list font-black-16px">
                         <li>{{$vacancy->company_name}}</li>
                         <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->address}}</li>
-                    </ul>
-                    <div class="btns-aplication-contacts-small">
-                        <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 227px);">
-                            @csrf
-                            <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
-                        </form>
-                        <button class="btn-contacts-small font-blue-17px">Контакты</button>
+                    </ul></a>
+                        <div class="btns-aplication-contacts-small">
+                            <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 227px);">
+                                @csrf
+                                <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                            </form>
+                            <button class="btn-contacts-small font-blue-17px" id="{{$vacancy->id}}">Контакты</button>
+                        </div>
+                </div>
+
+                <div class="contacts hide" id="{{$vacancy->id}}">
+                    <div class="contacts-inner">
+                        <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
+                        <p class="font-black-17px">Номер телефона: {{$vacancy->phone}}</p>
+                        <p class="font-black-17px">Почта: {{$vacancy->user->email}}</p>
                     </div>
-                </div></a>
+                </div>
             @endforeach
         </div>
     </div>

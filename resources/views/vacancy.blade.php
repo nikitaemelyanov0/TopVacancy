@@ -3,6 +3,13 @@
 @section('title', 'Вакансия')
 
 @section('content')
+    <div class="contacts hide" id="{{$vacancy->id}}">
+        <div class="contacts-inner">
+            <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
+            <p class="font-black-17px">Номер телефона: {{$vacancy->phone}}</p>
+            <p class="font-black-17px">Почта: {{$vacancy->user->email}}</p>
+        </div>
+    </div>
     <div class="vacancy-header wrapper">
         <div class="vacancy-header-left">
             <h1 class="font-black-30px">{{$vacancy->position}}</h1>
@@ -17,7 +24,7 @@
                     @csrf
                     <button class="btn-aplication font-white-17px" type="submit">Откликнуться</button>
                 </form>
-                <button class="btn-contacts font-blue-17px">Контакты</button>
+                <button class="btn-contacts font-blue-17px" id="{{$vacancy->id}}">Контакты</button>
             </div>
         </div>
         <div class="vacancy-header-right">
@@ -46,22 +53,33 @@
     </div>
     <div class="related-vacancies wrapper">
         <h3 class="font-black-20px">Похожие вакансии</h3>
-        <div class="card-vacancy">
-            <h4 class="font-black-23px">Продавец-кассир</h4>
-            <div class="card-vacancy-tags">
-                <h5 class="font-black-18px">от 48 000 ₽ за месяц</h5>
-                <ul class="font-black-16px">
-                    <li>без опыта</li>
-                </ul>
-            </div>
-            <ul class="card-vacancy-list font-black-16px">
-                <li>Пятерочка</li>
-                <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt=""> Челябинск</li>
-            </ul>
-            <div class="btns-aplication-contacts-small">
-                <button class="btn-aplication-small font-white-17px">Откликнуться</button>
-                <button class="btn-contacts-small font-blue-17px">Контакты</button>
-            </div>
-        </div>
+        @foreach($vacancies as $vacancyrelete)
+            @if($vacancyrelete->id!=$vacancy->id)
+                <a href="{{route('vacancy.index', $vacancyrelete->id)}}"><div class="card-vacancy">
+                        <h4 class="font-black-23px">{{$vacancyrelete->position}}</h4>
+                        <div class="card-vacancy-tags">
+                            <h5 class="font-black-18px">{{$vacancyrelete->salary}}₽ за месяц</h5>
+                            <ul class="font-black-16px">
+                                @foreach($vacancyrelete->categories as $category)
+                                    @if($category->category_type=='Опыт работы')
+                                        {{$category->category_name}}
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                        <ul class="card-vacancy-list font-black-16px">
+                            <li>{{$vacancyrelete->company_name}}</li>
+                            <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt="">{{$vacancyrelete->address}}</li>
+                        </ul>
+                        <div class="btns-aplication-contacts-small">
+                            <form action="{{route('application.store', $vacancyrelete->id)}}" method="POST" style="width: min(100%, 227px);">
+                                @csrf
+                                <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                            </form>
+                            <button class="btn-contacts-small font-blue-17px">Контакты</button>
+                        </div>
+                    </div></a>
+            @endif
+        @endforeach
     </div>
 @endsection

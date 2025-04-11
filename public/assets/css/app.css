@@ -227,6 +227,15 @@
     font-size: 17px;
 }
 
+.font-red-small{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: #C8322D;
+    font-size: 16px;
+}
+
 .wrapper{
     max-width: 1172px;
     padding-inline: 16px;
@@ -329,7 +338,7 @@ header{
 
 .main-searh{
     position: relative;
-    margin-top: 50px;   
+    margin-top: 50px;
     display: flex;
     align-items: center;
 }
@@ -384,6 +393,7 @@ hr{
 .cards-companies{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .card-company{
@@ -724,7 +734,7 @@ footer{
 
 .glass-second{
     position: absolute;
-    padding-left: 12.5px; 
+    padding-left: 12.5px;
 }
 
 .btn-search-big{
@@ -774,8 +784,9 @@ footer{
     margin-bottom: 20px;
 }
 
-.btn-reset{
-    margin-top: 17px;
+.btn-reset{ 
+    margin-top: 17px; 
+    display: flex;
     background-color: transparent;
     cursor: pointer;
 }
@@ -799,6 +810,7 @@ footer{
     border: 1px solid #CECECE;
     border-radius: 10px;
     padding-left: 8px;
+    margin-bottom: 12px;
 }
 
 .create-resume-vacancy > form > p{
@@ -813,13 +825,13 @@ footer{
     max-height: 524px;
     border: 1px solid #CECECE;
     border-radius: 10px;
-    margin-bottom: 50px;
     padding: 8px;
+    margin-bottom: 12px;
 }
 
 .input-file{
-    width: 165px!important; 
-    height: 165px!important; 
+    width: 165px!important;
+    height: 165px!important;
 }
 
 .create-resume-vacancy > form > input[type=file]{
@@ -828,8 +840,8 @@ footer{
 
 .img-continer{
     position: absolute;
-    width: 165px; 
-    height: 165px; 
+    width: 165px;
+    height: 165px;
     background-image: url(/public/assets/images/add-photo.png);
     z-index: 0;
 }
@@ -911,7 +923,7 @@ footer{
 }
 
 .hide{
-    display: none;
+    display: none!important;
 }
 
 input[type=radio] {
@@ -922,9 +934,54 @@ button:hover{
     filter: brightness(1.1);
 }
 
+.hover:hover{
+    filter: brightness(1.1);
+}
+
 .a-vacancy {
     display: block;
     width: min(100%, 762px);
+}
+
+.contacts{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.43);
+    z-index: 999;
+}
+
+.scrolllock{
+    overflow: hidden;
+}
+
+.contacts-inner{
+    position: relative;
+    background-color: white;
+    display: grid;
+    row-gap: 35px;
+    padding: 60px;
+    border-radius: 20px;
+}
+
+input{
+    color: black!important;
+}
+
+.cross{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+}
+
+em{
+    font-style: italic!important;
 }
 
 @media (max-width: 1120px) {
@@ -1002,7 +1059,7 @@ button:hover{
         display: grid;
         justify-content: center;
         row-gap: 0;
-        
+
     }
 }
 
@@ -1129,7 +1186,7 @@ button:hover{
         row-gap: 40px;
     }
     .btns-aplication-contacts {
-        display: grid; 
+        display: grid;
     }
     .btn-contacts {
         width: min(100%, 305px);

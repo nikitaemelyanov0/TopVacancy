@@ -12,8 +12,7 @@ class ResumeController extends Controller
 
     public function createResumeIndex()
     {
-        $currentuser = Auth::user();
-        if ($currentuser->role=='employer' || $currentuser->resume) {
+        if (Auth::user()->role=='employer') {
             return redirect('/');
         }
         $resume = new Resume();
@@ -26,14 +25,26 @@ class ResumeController extends Controller
             'user_id' => '',
             'profession' => 'required',
             'photo' => 'nullable',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'gender' => 'required',
             'city' => 'required',
             'date_of_birth' => 'required',
-            'salary_expectation' => 'required',
+            'salary_expectation' => 'required|numeric',
             'education' => 'required',
             'educational_institution' => 'required',
             'description' => 'required',
+        ], [
+            'profession.required' => 'Заполните это поле',
+            'phone.required' => 'Заполните это поле',
+            'phone.numeric' => 'Введите номер телефона',
+            'gender.required' => 'Укажите ваш пол',
+            'city.required' => 'Заполните это поле',
+            'date_of_birth.required' => 'Заполните это поле',
+            'salary_expectation.required' => 'Заполните это поле',
+            'salary_expectation.numeric' => 'Поле должно быть числом',
+            'education.required' => 'Укажите ваше образование',
+            'educational_institution.required' => 'Заполните это поле',
+            'description.required' => 'Заполните это поле',
         ]);
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('images', 'public');
@@ -85,6 +96,18 @@ class ResumeController extends Controller
             'education' => 'required',
             'educational_institution' => 'required',
             'description' => 'required',
+        ], [
+            'profession.required' => 'Заполните это поле',
+            'phone.required' => 'Заполните это поле',
+            'phone.numeric' => 'Введите номер телефона',
+            'gender.required' => 'Укажите ваш пол',
+            'city.required' => 'Заполните это поле',
+            'date_of_birth.required' => 'Заполните это поле',
+            'salary_expectation.required' => 'Заполните это поле',
+            'salary_expectation.numeric' => 'Поле должно быть числом',
+            'education.required' => 'Укажите ваше образование',
+            'educational_institution.required' => 'Заполните это поле',
+            'description.required' => 'Заполните это поле',
         ]);
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('images', 'public');

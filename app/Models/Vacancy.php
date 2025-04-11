@@ -20,4 +20,9 @@ class Vacancy extends Model
     {
         return $this->belongsToMany(Resume::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

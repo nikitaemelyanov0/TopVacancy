@@ -11,12 +11,12 @@
             <div class="header-btns header-btns-second">
                 @if($currentuser->role =='applicant')
                     @if($currentuser->resume)
-                        <a href="{{route('resume.index', $currentuser->resume->id)}}"><button class="btn-blue font-white-16px btn-create-vacancy show">Ваше резюме</button></a>
+                        <a href="{{route('resume.index', $currentuser->resume->id)}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Ваше резюме</button></a>
                     @else
-                        <a href="{{route('create_resume.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show">Создать резюме</button></a>
+                        <a href="{{route('create_resume.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Создать резюме</button></a>
                     @endif
                 @else
-                    <a href="{{route('create_vacancy.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show">Создать вакансию</button></a>
+                    <a href="{{route('create_vacancy.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Создать вакансию</button></a>
                 @endif
                 <img src="{{asset('assets/images/burger.png')}}" alt="" class="burger">
                 <div class="burger-window hide">
@@ -30,8 +30,8 @@
                                 <a href="{{route('create_resume.index')}}"><li class="font-black-17px">Создать резюме</li></a>
                             @endif
                         @endif
-                        <a href="{{route('logout')}}"><li class="font-blue-17px">Выйти из аккаунта</li></a>
-                        <a href="{{route('delete_user')}}"><li class="font-red-17px">Удалить аккаунт</li></a>
+                        <a href="{{route('logout')}}"><li class="font-blue-17px hover">Выйти из аккаунта</li></a>
+                        <a href="{{route('delete_user')}}"><li class="font-red-17px hover">Удалить аккаунт</li></a>
                     </ul>
                 </div>
             </div>
