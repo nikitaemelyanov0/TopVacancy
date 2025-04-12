@@ -46,7 +46,7 @@ class CategorySeeder extends Seeder
             ['category_name' => 'Среднее', 'category_type' => 'Образование'],
             ['category_name' => 'Среднее профессиональное', 'category_type' => 'Образование'],
             ['category_name' => 'Высшее', 'category_type' => 'Образование'],
-            ['category_name' => 'Без опыта или не имеет значения', 'category_type' => 'Опыт работы'],
+            ['category_name' => 'Без опыта', 'category_type' => 'Опыт работы'],
             ['category_name' => 'От 1 до 3 лет', 'category_type' => 'Опыт работы'],
             ['category_name' => 'От 3 до 6 лет', 'category_type' => 'Опыт работы'],
             ['category_name' => 'Более 6 лет', 'category_type' => 'Опыт работы'],

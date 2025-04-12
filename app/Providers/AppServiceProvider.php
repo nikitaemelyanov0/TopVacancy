@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,13 @@ class AppServiceProvider extends ServiceProvider
                 $currentuser = User::find($id);
             }
 
+            // $ip = request()->ip();
+            // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+            // $location = $response->json();
+            // $view->with('location', $location);
+            // $location['city']
+            
             $view->with('currentuser', $currentuser);
-        });
+        }); 
     }
 }

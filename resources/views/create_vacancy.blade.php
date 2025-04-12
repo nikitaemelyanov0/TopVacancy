@@ -25,7 +25,7 @@
             <div class="img-continer">
 
             </div>
-            <input type="file" class="input-file" name="logo"> <br>
+            <input type="file" class="input-file" name="logo" value="{{ old('logo', $resume->logo ?? '') }}"> <br>
 
             <p class="font-black-18px">Номер телефона</p>
             <input type="text" class="font-black-16px" name="phone" value="{{ old('phone', $vacancy->phone ?? '') }}"> <br>

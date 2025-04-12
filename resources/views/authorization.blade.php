@@ -3,7 +3,7 @@
 @section('title', 'Авторизация')
 
 @section('content')
-    <div class="registration">
+    <div class="registration" style="min-height: 80vh">
         <div class="registration-inner">
             <div class="registration-header">
                 <h1 class="font-white-18px">Авторизация</h1>

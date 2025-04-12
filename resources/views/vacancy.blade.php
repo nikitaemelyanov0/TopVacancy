@@ -70,7 +70,7 @@
                         <ul class="card-vacancy-list font-black-16px">
                             <li>{{$vacancyrelete->company_name}}</li>
                             <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt="">{{$vacancyrelete->address}}</li>
-                        </ul>
+                        </ul></a>
                         <div class="btns-aplication-contacts-small">
                             <form action="{{route('application.store', $vacancyrelete->id)}}" method="POST" style="width: min(100%, 227px);">
                                 @csrf
@@ -78,7 +78,7 @@
                             </form>
                             <button class="btn-contacts-small font-blue-17px">Контакты</button>
                         </div>
-                    </div></a>
+                    </div>
             @endif
         @endforeach
     </div>

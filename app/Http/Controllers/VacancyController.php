@@ -52,9 +52,11 @@ class VacancyController extends Controller
         $vacancy = Vacancy::create($data);
 
         $datasecond = $request->validate([
-            'categories' => 'required|array',
+            'categories' => 'array'
         ]);
-        $vacancy->categories()->attach($datasecond['categories']);
+        if ($request->has('categories')){
+            $vacancy->categories()->attach($datasecond['categories']);
+        }
 
         return redirect('vacancy/'.$vacancy->id);
     }
@@ -108,15 +110,13 @@ class VacancyController extends Controller
         ]);
         if ($request->hasFile('logo')) {
             $path = $request->file('logo')->store('images', 'public');
-        } else {
-            $path = 'images\company-logo.png';
+            $data['logo'] = $path;
         }
-        $data['logo'] = $path;
         $data['user_id'] = Auth::id();
         $vacancy->update($data);
 
         $datasecond = $request->validate([
-            'categories' => 'required|array',
+            'categories' => 'array'
         ]);
         if ($request->has('categories')) {
             $vacancy->categories()->sync($datasecond['categories']);
@@ -131,7 +131,18 @@ class VacancyController extends Controller
         $companies = Vacancy::select('vacancies.*')
         ->join(DB::raw('(SELECT MIN(id) as id FROM vacancies GROUP BY company_name) as grouped'), 'vacancies.id', '=', 'grouped.id')
         ->get();
-        return view('home', compact('vacancies', 'categories', 'companies'));
+
+        $professions = Vacancy::selectRaw(
+            'position, 
+            COUNT(*) as count, 
+            MAX(salary) as max_salary'
+        )
+        ->groupBy('position')
+        ->orderBy('count', 'desc')
+        ->take(8)
+        ->get();
+
+        return view('home', compact('vacancies', 'categories', 'companies', 'professions'));
     }
 
     public function searchVacancy(Request $request) {
@@ -156,7 +167,7 @@ class VacancyController extends Controller
             $query->where('address', 'like', '%'.$request->address.'%');
         }
 
-        $vacancies = $query->paginate(10);
+        $vacancies = $query->get();
         $categories = Category::all();
 
         return view('search_vacancy', compact('categories', 'vacancies'));

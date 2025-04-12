@@ -31,11 +31,14 @@
                     <input type="text" placeholder="Введите название" class="search-vacancy-filter-input font-grey-light-16px" name="address" value="{{request('address')}}">
 
                     <h4 class="font-black-18px">Отрасль</h4>
-                    @foreach($categories as $category)
-                        @if($category->category_type=='Отрасль')
-                            <label class="font-light-16px" for="{{$category->id}}"><input type="checkbox" class="checkbox-input" name="categories[]" value="{{$category->id}}" @checked(collect(request('categories'))->contains($category->id))>{{$category->category_name}}</label> <br>
-                        @endif
-                    @endforeach
+                    <div class="industries-hide">
+                        @foreach($categories as $category)
+                            @if($category->category_type=='Отрасль')
+                                <label class="font-light-16px" for="{{$category->id}}"><input type="checkbox" class="checkbox-input" name="categories[]" value="{{$category->id}}" @checked(collect(request('categories'))->contains($category->id))>{{$category->category_name}}</label> <br>
+                            @endif
+                        @endforeach
+                    </div>
+                    <p class="font-blue-16px show-industries" style="margin-top: 13px; cursor: pointer">Показать все</p>
 
                     <h4 class="font-black-18px">Образование</h4>
                     @foreach($categories as $category)

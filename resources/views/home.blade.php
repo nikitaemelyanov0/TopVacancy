@@ -48,54 +48,14 @@
     <section class="work-by-profession wrapper">
         <h1 class="font-black-20px title-second">Работа по профессиям</h1>
         <div class="cards">
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
-            <div class="card">
-                <h2 class="font-black-18px">Инженер</h2>
-                <p class="font-black-17px">до 250 000 ₽</p>
-                <hr>    
-                <p class="font-blue-16px">3 вакансии</p>
-            </div>
+            @foreach($professions as $profession)
+                <a href="{{route('search_vacancy', 'position='.$profession->position)}}"><div class="card">
+                    <h2 class="font-black-18px">{{$profession->position}}</h2>
+                    <p class="font-black-17px">до {{$profession->max_salary}} ₽</p> 
+                    <hr>    
+                    <p class="font-blue-16px">{{$profession->count}} вакансии</p>
+                </div></a>
+            @endforeach
         </div>
     </section>
     <section class="work-by-industry wrapper">
