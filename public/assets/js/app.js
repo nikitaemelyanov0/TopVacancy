@@ -69,3 +69,19 @@ try{
 }catch(error) {
     console.log(error);
 }
+
+try{
+    let hideFilters = document.querySelector('.hide-filters')
+    let searchVacancyFilter = document.querySelector('.search-vacancy-filter')
+
+    hideFilters.addEventListener('click', ()=> {
+        if (searchVacancyFilter.classList.contains('hide')) {
+            hideFilters.textContent = 'Скрыть фильтры';
+        } else {
+            hideFilters.textContent = 'Показать фильтры';
+        }
+        searchVacancyFilter.classList.toggle('hide')
+    })
+}catch(error) {
+    console.log(error);
+}
