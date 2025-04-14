@@ -47,9 +47,9 @@ class ResumeController extends Controller
             'description.required' => 'Заполните это поле',
         ]);
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('images', 'public');
+            $path = 'storage/'.$request->file('photo')->store('images', 'public');
         } else {
-            $path = 'images/user-photo.png';
+            $path = 'assets/images/user-photo.png';
         }
         $data['photo'] = $path;
         $data['user_id'] = Auth::id();
@@ -110,7 +110,7 @@ class ResumeController extends Controller
             'description.required' => 'Заполните это поле',
         ]);
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('images', 'public');
+            $path = 'storage/'.$request->file('photo')->store('images', 'public');
             $data['photo'] = $path;
         }
         $data['user_id'] = Auth::id();

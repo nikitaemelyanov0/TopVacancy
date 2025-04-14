@@ -43,9 +43,9 @@ class VacancyController extends Controller
             'description.required' => 'Заполните это поле'
         ]);
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('images', 'public');
+            $path = 'storage/'.$request->file('logo')->store('images', 'public');
         } else {
-            $path = 'images\company-logo.png';
+            $path = 'assets/images\company-logo.png';
         }
         $data['logo'] = $path;
         $data['user_id'] = Auth::id();
@@ -109,7 +109,7 @@ class VacancyController extends Controller
             'description.required' => 'Заполните это поле'
         ]);
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('images', 'public');
+            $path = 'storage/'.$request->file('logo')->store('images', 'public');
             $data['logo'] = $path;
         }
         $data['user_id'] = Auth::id();

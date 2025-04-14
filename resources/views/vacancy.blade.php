@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="vacancy-header-right">
-            <img src="{{asset('storage/'.$vacancy->logo)}}" alt="" style="width: 70px">
+            <img src="{{asset($vacancy->logo)}}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
             <h3 class="font-black-19px">{{$vacancy->company_name}}</h3>
         </div>
     </div>

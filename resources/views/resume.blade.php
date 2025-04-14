@@ -6,7 +6,7 @@
     <div class="resume wrapper">
         <div class="resume-header">
             <div class="resume-header-left">
-                <img src="{{ asset('storage/'.$resume->photo) }}" alt="" width="227px">
+                <img src="{{ asset($resume->photo) }}" alt="" style="width: 227px; height: 227px; object-fit: cover;">
             </div>
             <div class="resume-header-right">
                 <h1 class="font-black-23px">{{$resume->profession}}</h1>

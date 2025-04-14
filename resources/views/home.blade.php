@@ -39,7 +39,7 @@
         <div class="cards-companies">
             @foreach($companies->take(6) as $company)
                 <a href="{{route('search_company', $company->company_name)}}"><div class="card-company hover">
-                    <img src="{{asset('storage/'.$company->logo)}}" alt="" style="height: 63px">
+                    <img src="{{asset($company->logo)}}" alt="" style="height: 63px; width: 63px; object-fit: cover;">
                     <h3 class="font-light-16px">{{$company->company_name}}</h3>
                 </div></a>
             @endforeach
