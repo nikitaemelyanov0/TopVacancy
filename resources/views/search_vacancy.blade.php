@@ -12,9 +12,13 @@
     <div class="search-vacancy-body wrapper">
         <div class="search-vacancy-left">
             <h2 class="font-black-20px-regular">Найдено {{count($vacancies)}} вакансий</h2>
+            <p class="hide-filters">Скрыть фильтры</p>
             <div class="search-vacancy-sort">
-                <h3 class="font-light-16px">По соответствию</h3>
-                <img src="{{asset('assets\images\show.png')}}" alt="">
+                <select name="sort" id="sort" onchange="this.form.submit()">
+                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Сначала новые</option>
+                    <option value="salary_asc" {{ request('sort') == 'salary_asc' ? 'selected' : '' }}>Зарплата по возрастанию</option>
+                    <option value="salary_desc" {{ request('sort') == 'salary_desc' ? 'selected' : '' }}>Зарплата по убыванию</option>
+                </select>
             </div>
             <div class="search-vacancy-filter">
                     <h4 class="font-black-18px">Подработка</h4>
