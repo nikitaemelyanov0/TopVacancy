@@ -12,12 +12,12 @@
     <div class="search-vacancy-body wrapper">
         <div class="search-vacancy-left">
             <h2 class="font-black-20px-regular">Найдено {{count($vacancies)}} вакансий</h2>
-            <p class="hide-filters">Скрыть фильтры</p>
+            <p class="hide-filters font-blue-16px">Скрыть фильтры</p>
             <div class="search-vacancy-sort">
-                <select name="sort" id="sort" onchange="this.form.submit()">
-                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Сначала новые</option>
-                    <option value="salary_asc" {{ request('sort') == 'salary_asc' ? 'selected' : '' }}>Зарплата по возрастанию</option>
-                    <option value="salary_desc" {{ request('sort') == 'salary_desc' ? 'selected' : '' }}>Зарплата по убыванию</option>
+                <select name="sort" id="sort" onchange="this.form.submit()" class="search-vacancy-sort-select font-black-17px">
+                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }} class="font-black-16px">Сначала новые</option>
+                    <option value="salary_asc" {{ request('sort') == 'salary_asc' ? 'selected' : '' }} class="font-black-16px">Зарплата по возрастанию</option>
+                    <option value="salary_desc" {{ request('sort') == 'salary_desc' ? 'selected' : '' }} class="font-black-16px">Зарплата по убыванию</option>
                 </select>
             </div>
             <div class="search-vacancy-filter">
