@@ -989,6 +989,11 @@ em{
     height: 147px;
 }
 
+.hide-filters{
+    display: none;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 1120px) {
     .cards {
         display: grid;
@@ -1081,6 +1086,9 @@ em{
     }
     .search-vacancy-right {
         margin-top: 30px;
+    }
+    .hide-filters{
+        display: block;
     }
 }
 
