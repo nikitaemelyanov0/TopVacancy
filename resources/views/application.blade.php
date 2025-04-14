@@ -4,7 +4,11 @@
 
 @section('content')
    <div class="application wrapper" style="min-height: 100vh">
+        @if($currentuser->vacancies->count()==0)
+            <h2 class="font-black-20px">У вас еще нет вакансий</h2>
+        @endif
         @foreach($currentuser->vacancies as $vacancy)
+            <h2 class="font-black-20px" style="margin-bottom: 30px">Ваши вакансии</h2>
             <a href="{{route('vacancy.index', $vacancy->id)}}" class="a-vacancy"><div class="card-vacancy">
                 <h4 class="font-black-23px">{{$vacancy->position}}</h4>
                 <div class="card-vacancy-tags">
