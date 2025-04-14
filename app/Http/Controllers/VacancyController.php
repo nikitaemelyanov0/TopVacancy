@@ -167,7 +167,19 @@ class VacancyController extends Controller
             $query->where('address', 'like', '%'.$request->address.'%');
         }
 
-        $vacancies = $query->get();
+        $sort = $request->get('sort', 'newest');
+
+        $vacancies = $query
+            ->when($sort === 'salary_asc', function($query) {
+                return $query->orderBy('salary');
+            })
+            ->when($sort === 'salary_desc', function($query) {
+                return $query->orderByDesc('salary');
+            })
+            ->when($sort === 'newest', function($query) {
+                return $query->latest();
+            })->get();
+        
         $categories = Category::all();
 
         return view('search_vacancy', compact('categories', 'vacancies'));
