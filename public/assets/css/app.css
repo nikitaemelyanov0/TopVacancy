@@ -994,6 +994,10 @@ em{
     margin-bottom: 20px;
 }
 
+.search-vacancy-sort-select{
+    background-color: white;
+}
+
 @media (max-width: 1120px) {
     .cards {
         display: grid;
