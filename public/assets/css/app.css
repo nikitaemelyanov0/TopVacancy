@@ -297,7 +297,7 @@ header{
 }
 
 .main-background{
-    background-image: url(/public/assets/images/main-bg.png);
+    background-image: url(/assets/images/main-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -378,7 +378,7 @@ header{
 }
 
 .card > p{
-    padding: 20px 0 20px 20px;
+    padding: 20px 10px 20px 20px;
 }
 
 .card > h2{
@@ -842,7 +842,7 @@ footer{
     position: absolute;
     width: 165px;
     height: 165px;
-    background-image: url(/public/assets/images/add-photo.png);
+    background-image: url(/assets/images/add-photo.png);
     z-index: 0;
 }
 

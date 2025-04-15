@@ -14,9 +14,9 @@
             <ul>
                 <li class="font-white-19px">Контакты</li>
                 <li class="footer-contacts">
-                    <img src="{{asset('assets/images/telegram.png')}}" alt="">
-                    <img src="{{asset('assets/images/vk.png')}}" alt="">
-                    <img src="{{asset('assets/images/facebook.png')}}" alt="">
+                    <a href="#"><img src="{{asset('assets/images/telegram.png')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/images/vk.png')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/images/facebook.png')}}" alt=""></a>
                 </li>
             </ul>
         </div>

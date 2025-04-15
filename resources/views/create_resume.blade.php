@@ -17,7 +17,9 @@
 
             <p>Ваше фото</p>
             <div class="img-continer">
-
+                <div class="continer-preview">
+                    <img class="img-preview" src="{{asset($resume->photo)}}" alt="" style="height: 165px; width: 165px; object-fit: cover;">
+                </div>
             </div>
             <input type="file" class="input-file" name="photo" value="{{ old('photo', $resume->photo ?? '') }}"> <br>
 

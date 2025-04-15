@@ -32,7 +32,7 @@
                     <input type="text" placeholder="от" class="search-vacancy-filter-input font-grey-light-16px" name="salary" value="{{request('salary')}}">
 
                     <h4 class="font-black-18px">Город</h4>
-                    <input type="text" placeholder="Введите название" class="search-vacancy-filter-input font-grey-light-16px" name="address" value="{{request('address')}}">
+                    <input type="text" placeholder="Введите название" class="search-vacancy-filter-input font-grey-light-16px" name="address" value="{{ request()->has('address') ? request('address') : (old('address') ?? 'Челябинск') }}">
 
                     <h4 class="font-black-18px">Отрасль</h4>
                     <div class="industries-hide">
@@ -71,7 +71,7 @@
                             <label class="font-light-16px" for="{{$category->id}}"><input type="checkbox" class="checkbox-input" name="categories[]" value="{{$category->id}}" @checked(collect(request('categories'))->contains($category->id))>{{$category->category_name}}</label> <br>
                         @endif
                     @endforeach
-                    <a href="{{route('search_vacancy')}}" class="font-blue-16px btn-reset hover">Сбросить все</a>
+                    <a href="{{route('search_vacancy', 'position=&sort=newest&salary=&address=')}}" class="font-blue-16px btn-reset hover">Сбросить все</a>
                 </form>
             </div>
         </div>

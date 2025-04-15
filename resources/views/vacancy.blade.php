@@ -52,34 +52,36 @@
         @endif
     </div>
     <div class="related-vacancies wrapper">
-        <h3 class="font-black-20px">Похожие вакансии</h3>
-        @foreach($vacancies as $vacancyrelete)
-            @if($vacancyrelete->id!=$vacancy->id)
-                <a href="{{route('vacancy.index', $vacancyrelete->id)}}"><div class="card-vacancy">
-                        <h4 class="font-black-23px">{{$vacancyrelete->position}}</h4>
-                        <div class="card-vacancy-tags">
-                            <h5 class="font-black-18px">{{$vacancyrelete->salary}}₽ за месяц</h5>
-                            <ul class="font-black-16px">
-                                @foreach($vacancyrelete->categories as $category)
-                                    @if($category->category_type=='Опыт работы')
-                                        {{$category->category_name}}
-                                    @endif
-                                @endforeach
-                            </ul>
+        @if($vacancies->count()>1)
+            <h3 class="font-black-20px">Похожие вакансии</h3>
+            @foreach($vacancies->take(10) as $vacancyrelete)
+                @if($vacancyrelete->id!=$vacancy->id)
+                    <a href="{{route('vacancy.index', $vacancyrelete->id)}}"><div class="card-vacancy">
+                            <h4 class="font-black-23px">{{$vacancyrelete->position}}</h4>
+                            <div class="card-vacancy-tags">
+                                <h5 class="font-black-18px">{{$vacancyrelete->salary}}₽ за месяц</h5>
+                                <ul class="font-black-16px">
+                                    @foreach($vacancyrelete->categories as $category)
+                                        @if($category->category_type=='Опыт работы')
+                                            {{$category->category_name}}
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <ul class="card-vacancy-list font-black-16px">
+                                <li>{{$vacancyrelete->company_name}}</li>
+                                <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt="">{{$vacancyrelete->address}}</li>
+                            </ul></a>
+                            <div class="btns-aplication-contacts-small">
+                                <form action="{{route('application.store', $vacancyrelete->id)}}" method="POST" style="width: min(100%, 227px);">
+                                    @csrf
+                                    <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                </form>
+                                <button class="btn-contacts-small font-blue-17px">Контакты</button>
+                            </div>
                         </div>
-                        <ul class="card-vacancy-list font-black-16px">
-                            <li>{{$vacancyrelete->company_name}}</li>
-                            <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt="">{{$vacancyrelete->address}}</li>
-                        </ul></a>
-                        <div class="btns-aplication-contacts-small">
-                            <form action="{{route('application.store', $vacancyrelete->id)}}" method="POST" style="width: min(100%, 227px);">
-                                @csrf
-                                <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
-                            </form>
-                            <button class="btn-contacts-small font-blue-17px">Контакты</button>
-                        </div>
-                    </div>
-            @endif
-        @endforeach
+                @endif
+            @endforeach
+        @endif
     </div>
 @endsection

@@ -85,3 +85,22 @@ try{
 }catch(error) {
     console.log(error);
 }
+
+try{
+    document.querySelector('.input-file').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const preview = document.querySelector('.img-preview');
+                preview.src = event.target.result;
+                document.querySelector('.continer-preview').style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        }
+    })
+}catch(error) {
+    console.log(error);
+}

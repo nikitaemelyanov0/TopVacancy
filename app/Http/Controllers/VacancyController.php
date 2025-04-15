@@ -166,6 +166,7 @@ class VacancyController extends Controller
         if ($request->has('address')) {
             $query->where('address', 'like', '%'.$request->address.'%');
         }
+        else $query->where('address', 'like', '%'.'Челябинск'.'%');
 
         $sort = $request->get('sort', 'newest');
 

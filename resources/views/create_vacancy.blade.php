@@ -23,9 +23,11 @@
 
             <p class="font-black-18px">Логотип компании</p>
             <div class="img-continer">
-
+                <div class="continer-preview">
+                    <img class="img-preview" src="{{asset($vacancy->logo)}}" alt="" style="height: 165px; width: 165px; object-fit: cover;">
+                </div>
             </div>
-            <input type="file" class="input-file" name="logo" value="{{ old('logo', $resume->logo ?? '') }}"> <br>
+            <input type="file" class="input-file" name="logo" value="{{ old('logo', $vacancy->logo ?? '') }}"> <br>
 
             <p class="font-black-18px">Номер телефона</p>
             <input type="text" class="font-black-16px" name="phone" value="{{ old('phone', $vacancy->phone ?? '') }}"> <br>
