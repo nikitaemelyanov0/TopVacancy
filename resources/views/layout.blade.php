@@ -21,6 +21,6 @@
 
     @include('components.footer')
     
-    <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{secure_asset('assets/js/app.js')}}"></script>
 </body>
 </html>
