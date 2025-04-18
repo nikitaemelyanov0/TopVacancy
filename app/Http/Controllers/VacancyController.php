@@ -146,7 +146,14 @@ class VacancyController extends Controller
     }
 
     public function searchVacancy(Request $request) {
-        $ip = request()->ip();
+        $ip = $_SERVER['REMOTE_ADDR'];
+            
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; 
+        }            
+        if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
+                $ip = 'Не удалось получить IP';
+        }
         $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
         $location = $response->json();
         
@@ -170,7 +177,7 @@ class VacancyController extends Controller
         if ($request->has('address')) {
             $query->where('address', 'like', '%'.$request->address.'%');
         }
-        else $query->where('address', 'like', '%'.'Челябинск'.'%');
+        else $query->where('address', 'like', '%'.$location['city'].'%');
 
         $sort = $request->get('sort', 'newest');
 
