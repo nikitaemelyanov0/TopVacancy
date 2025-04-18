@@ -32,7 +32,7 @@
                     <input type="text" placeholder="от" class="search-vacancy-filter-input font-grey-light-16px" name="salary" value="{{request('salary')}}">
 
                     <h4 class="font-black-18px">Город</h4>
-                    <input type="text" placeholder="Введите название" class="search-vacancy-filter-input font-grey-light-16px" name="address" value="{{ request()->has('address') ? request('address') : (old('address') ?? $location['city'] }}">
+                    <input type="text" placeholder="Введите название" class="search-vacancy-filter-input font-grey-light-16px" name="address" value="{{ request()->has('address') ? request('address') : (old('address') ?? {$location['city']} }}">
 
                     <h4 class="font-black-18px">Отрасль</h4>
                     <div class="industries-hide">
