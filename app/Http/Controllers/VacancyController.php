@@ -146,6 +146,10 @@ class VacancyController extends Controller
     }
 
     public function searchVacancy(Request $request) {
+        $ip = request()->ip();
+        $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+        $location = $response->json();
+        
         $query = Vacancy::query();
 
         if ($request->has('position')) {
@@ -166,7 +170,7 @@ class VacancyController extends Controller
         if ($request->has('address')) {
             $query->where('address', 'like', '%'.$request->address.'%');
         }
-        else $query->where('address', 'like', '%'.'Челябинск'.'%');
+        else $query->where('address', 'like', '%'.$location['city'].'%');
 
         $sort = $request->get('sort', 'newest');
 

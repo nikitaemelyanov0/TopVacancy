@@ -31,12 +31,11 @@ class AppServiceProvider extends ServiceProvider
                 $currentuser = User::find($id);
             }
 
-            // $ip = request()->ip();
-            // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
-            // $location = $response->json();
-            // $view->with('location', $location);
-            // $location['city']
+            $ip = request()->ip();
+            $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+            $location = $response->json();
             
+            $view->with('location', $location);            
             $view->with('currentuser', $currentuser);
         }); 
     }
