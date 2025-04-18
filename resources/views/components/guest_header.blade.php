@@ -6,7 +6,7 @@
         <div class="header-links">
             <div class="location">
                 <img src="{{asset('assets/images/location.png')}}" alt="">
-                <p class="font-white-16px" style="text-decoration: underline;">{{$location}}</p>
+                <p class="font-white-16px" style="text-decoration: underline;">{{$location['city']}}</p>
             </div>
             <div class="header-btns">
                 <a href="{{route('login')}}"><button class="btn-blue font-white-16px btn-create-vacancy hover">Создать вакансию</button></a>
