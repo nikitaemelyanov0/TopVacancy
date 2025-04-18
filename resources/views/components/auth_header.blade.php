@@ -6,7 +6,7 @@
         <div class="header-links header-links-second" style="width: 400px">
             <div class="location">
                 <img src="{{asset('assets/images/location.png')}}" alt="">
-                <p class="font-white-16px" style="text-decoration: underline;">$location['city']</p>
+                <p class="font-white-16px" style="text-decoration: underline;">{{$location['city']}}</p>
             </div>
             <div class="header-btns header-btns-second">
                 @if($currentuser->role =='applicant')
