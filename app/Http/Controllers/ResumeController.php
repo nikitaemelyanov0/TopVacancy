@@ -116,6 +116,8 @@ class ResumeController extends Controller
         if ($request->hasFile('photo')) {
             $path = 'storage/'.$request->file('photo')->store('images', 'public');
             $data['photo'] = $path;
+        } else {
+            $path = 'assets/images\company-logo.png';
         }
         $data['user_id'] = Auth::id();
         $resume->update($data);
