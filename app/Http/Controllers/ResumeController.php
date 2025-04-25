@@ -86,22 +86,24 @@ class ResumeController extends Controller
     {
         $resume = Resume::findOrFail($id);
 
-        $data = $request->validate([
+        $$data = $request->validate([
             'user_id' => '',
             'profession' => 'required',
             'photo' => 'nullable',
-            'phone' => 'required',
+            'phone' => 'required|string|size:11|regex:/^[0-9]+$/',
             'gender' => 'required',
             'city' => 'required',
             'date_of_birth' => 'required',
-            'salary_expectation' => 'required',
+            'salary_expectation' => 'required|numeric',
             'education' => 'required',
             'educational_institution' => 'required',
             'description' => 'required',
         ], [
             'profession.required' => 'Заполните это поле',
             'phone.required' => 'Заполните это поле',
-            'phone.numeric' => 'Введите номер телефона',
+            'phone.string' => 'Введите номер телефона',
+            'phone.size' => 'Введите номер телефона',
+            'phone.regex' => 'Введите номер телефона',
             'gender.required' => 'Укажите ваш пол',
             'city.required' => 'Заполните это поле',
             'date_of_birth.required' => 'Заполните это поле',
