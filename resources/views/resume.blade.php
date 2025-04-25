@@ -3,8 +3,8 @@
 @section('title', 'Резюме')
 
 @section('content')
-    <div class="resume wrapper">
-        <div class="resume-header" style="min-height: 80vh"> 
+    <div class="resume wrapper" style="min-height: 80vh">
+        <div class="resume-header"> 
             <div class="resume-header-left">
                 <img src="{{ asset($resume->photo) }}" alt="" style="width: 227px; height: 227px; object-fit: cover;">
             </div>
