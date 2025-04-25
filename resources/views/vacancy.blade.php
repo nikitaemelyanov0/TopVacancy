@@ -3,7 +3,7 @@
 @section('title', 'Вакансия')
 
 @section('content')
-    <div class="contacts hide" id="{{$vacancy->id}}">
+    <div class="contacts hide" id="{{$vacancy->id}}" style="min-height: 80vh">
         <div class="contacts-inner">
             <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
             <p class="font-black-17px">Номер телефона: {{$vacancy->phone}}</p>
