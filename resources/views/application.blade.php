@@ -3,7 +3,7 @@
 @section('title', 'Отклики')
 
 @section('content')
-   <div class="application wrapper" style="min-height: 100vh">
+   <div class="application wrapper" style="min-height: 80vh">
         @if($currentuser->vacancies->count()==0)
             <h2 class="font-black-20px">У вас еще нет вакансий</h2>
         @else
