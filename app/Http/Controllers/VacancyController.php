@@ -113,7 +113,7 @@ class VacancyController extends Controller
             'salary.numeric' => 'Поле должно быть числом',
             'description.required' => 'Заполните это поле'
         ]);
-        if ($request->hasFile('logo')) {
+        if ($request->hasFile('logo') && $request->hasFile('logo') != 'assets/images\company-logo.png';) {
             $path = 'storage/'.$request->file('logo')->store('images', 'public');
             $data['logo'] = $path;
         }
