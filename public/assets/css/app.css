@@ -967,6 +967,7 @@ button:hover{
     row-gap: 35px;
     padding: 60px;
     border-radius: 20px;
+    padding-inline: 16px;
 }
 
 input{
@@ -1081,6 +1082,7 @@ em{
     .vacancy-header{
         display: grid;
         width: 100vw;
+        justify-content: center;
     }
     .search-vacancy-body{
         display: grid;
