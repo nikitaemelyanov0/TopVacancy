@@ -76,7 +76,7 @@ class ResumeController extends Controller
     public function edit($id)
     {
         $resume = Resume::findOrFail($id);
-        if($resume->user_id==Auth::id()) {
+        if($resume->user_id==Auth::id() || Auth::user()->role=='admin') {
             return view('create_resume', compact('resume'));
         }
         else return redirect('/');
@@ -86,8 +86,7 @@ class ResumeController extends Controller
     {
         $resume = Resume::findOrFail($id);
 
-        $$data = $request->validate([
-            'user_id' => '',
+        $data = $request->validate([
             'profession' => 'required',
             'photo' => 'nullable',
             'phone' => 'required|string|size:11|regex:/^[0-9]+$/',
@@ -119,7 +118,6 @@ class ResumeController extends Controller
         } else {
             $path = 'assets/images\company-logo.png';
         }
-        $data['user_id'] = Auth::id();
         $resume->update($data);
 
         return redirect('resume/'.$resume->id);

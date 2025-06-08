@@ -39,7 +39,7 @@
             {{$vacancy->address}}
         </p>
         @if($currentuser!=null)
-            @if($currentuser->id==$vacancy->user_id)
+            @if($currentuser->id==$vacancy->user_id || $currentuser->role=='admin')
                 <div class="btns-update-delete">
                     <a href="{{route('vacancy.edit', $vacancy->id)}}" class="btn-update font-white-17px">Изменить</a>
                     <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px">

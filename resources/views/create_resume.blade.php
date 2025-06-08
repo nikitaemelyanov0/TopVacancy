@@ -57,7 +57,6 @@
             <p class="font-black-18px">Образование</p>
             <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Среднее" @checked(old('education', $resume->education ?? '') === 'Среднее')>Среднее</label> <br>
             <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Среднее профессиональное" @checked(old('education', $resume->education ?? '') === 'Среднее профессиональное')>Среднее профессиональное</label> <br>
-            <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Неоконченное высшее" @checked(old('education', $resume->education ?? '') === 'Неоконченное высшее')>Неоконченное высшее</label> <br>
             <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Высшее" @checked(old('education', $resume->education ?? '') === 'Высшее')>Высшее</label> <br>
             @error('education')
                 <em class="font-red-small">{{$message}}</em>

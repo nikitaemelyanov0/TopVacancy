@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [VacancyController::class, 'vacanciesAtHome'])->name('home');
 
@@ -43,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/application',[ApplicationController::class, 'applicationIndex'])->name('application.index');
     Route::post('/application/{id}',[ApplicationController::class, 'makeApplication'])->name('application.store');
+
+    Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
 });
 
 Route::get('logout', [UserController:: class, 'logout'])->name('logout');

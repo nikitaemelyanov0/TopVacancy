@@ -9,13 +9,17 @@
                 <p class="font-white-16px" style="text-decoration: underline;">{{$location['city']}}</p>
             </div>
             <div class="header-btns header-btns-second">
+                @if($currentuser->role =='admin')
+                    <a href="{{route('admin')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Админка</button></a>
+                @endif
                 @if($currentuser->role =='applicant')
                     @if($currentuser->resume)
                         <a href="{{route('resume.index', $currentuser->resume->id)}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Ваше резюме</button></a>
                     @else
                         <a href="{{route('create_resume.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Создать резюме</button></a>
                     @endif
-                @else
+                @endif
+                @if($currentuser->role =='employer')
                     <a href="{{route('create_vacancy.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Создать вакансию</button></a>
                 @endif
                 <img src="{{asset('assets/images/burger.png')}}" alt="" class="burger">

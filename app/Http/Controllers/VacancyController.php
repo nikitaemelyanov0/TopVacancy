@@ -93,7 +93,6 @@ class VacancyController extends Controller
         $vacancy = Vacancy::findOrFail($id);
 
         $data = $request->validate([
-            'user_id' => '',
             'position' => 'required',
             'company_name' => 'required',
             'logo' => 'nullable',
@@ -119,7 +118,6 @@ class VacancyController extends Controller
         } else {
             $path = 'assets/images\company-logo.png';
         }
-        $data['user_id'] = Auth::id();
         $vacancy->update($data);
 
         $datasecond = $request->validate([
@@ -161,8 +159,9 @@ class VacancyController extends Controller
         if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
                 $ip = 'Не удалось получить IP';
         }
-        $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
-        $location = $response->json();
+        // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+        // $location = $response->json();
+        $location['city'] = 'Челябинск';
         
         $query = Vacancy::query();
 
