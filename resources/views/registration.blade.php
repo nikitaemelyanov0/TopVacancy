@@ -27,6 +27,9 @@
                     @error('email')
                         <p class="font-red-small">{{$message}}</p>
                     @enderror
+                    @error('user_name')
+                        <p class="font-red-small">{{$message}}</p>
+                    @enderror
                     <button type="submit" class="btn-submit-reg font-white-17px">Отправить</button>
                 </form>
                 <div class="registration-bottom-text">
