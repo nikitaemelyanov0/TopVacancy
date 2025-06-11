@@ -27,6 +27,7 @@ class UserController extends Controller
             'email.unique' => 'Пользователь с таким email уже существует',
             'password.min' => 'Пароль должен содержать минимум 6 символов',
             'password.confirmed' => 'Пароли не совпадают',
+            'password.required' => 'Введите ваш пароль',
             'user_name.required' => 'Введите ваше имя и фамилию' 
         ]);
         $data['password'] = Hash::make($data['password']);
