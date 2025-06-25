@@ -159,9 +159,8 @@ class VacancyController extends Controller
         if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
                 $ip = 'Не удалось получить IP';
         }
-        // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
-        // $location = $response->json();
-        $location['city'] = 'Челябинск';
+        $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+        $location = $response->json();
         
         $query = Vacancy::query();
 
