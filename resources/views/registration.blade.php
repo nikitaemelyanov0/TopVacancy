@@ -17,8 +17,8 @@
                 <form action="" method="post" class="registration-form">
                     @csrf
                     <input type="text" value="applicant" class="role" name="role" style="display: none">
-                    <input type="email" placeholder="Email" name="email" class="input-main font-grey-light-16px" value="{{old('email')}}">
                     <input type="text" placeholder="Ваше имя и фамилия" name="user_name" class="input-main font-grey-light-16px" value="{{old('user_name')}}">
+                    <input type="email" placeholder="Email" name="email" class="input-main font-grey-light-16px" value="{{old('email')}}">
                     <input type="password" placeholder="Пароль" name="password" class="input-main font-grey-light-16px" value="{{old('password')}}">
                     <input type="password" placeholder="Пароль еще раз" name="password_confirmation" class="input-main font-grey-light-16px" value="{{old('password_confirmation')}}">
                     @error('user_name')
@@ -28,6 +28,9 @@
                         <p class="font-red-small">{{$message}}</p>
                     @enderror
                     @error('email')
+                        <p class="font-red-small">{{$message}}</p>
+                    @enderror
+                    @error('user_name')
                         <p class="font-red-small">{{$message}}</p>
                     @enderror
                     <button type="submit" class="btn-submit-reg font-white-17px">Отправить</button>

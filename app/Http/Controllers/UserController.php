@@ -19,7 +19,16 @@ class UserController extends Controller
 
     public function createUser(RegestrationRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->validate([
+            'user_name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => ['required', 'min:6', 'confirmed'],
+            'role' => 'required'
+        ],[
+            'email.unique' => 'Пользователь с таким email уже существует',
+            'password.min' => 'Пароль должен содержать минимум 6 символов',
+            'password.confirmed' => 'Пароли не совпадают',
+        ]);
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
