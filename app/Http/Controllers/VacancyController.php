@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use App\Http\Requests\VacancyRequest;
 
 class VacancyController extends Controller
 {
@@ -22,29 +23,9 @@ class VacancyController extends Controller
         return view('create_vacancy', compact(['vacancy', 'categories']));
     }
 
-    public function createVacancy(Request $request)
+    public function createVacancy(VacancyRequest $request)
     {
-        $data = $request->validate([
-            'user_id' => '',
-            'position' => 'required',
-            'company_name' => 'required',
-            'logo' => 'nullable',
-            'phone' => 'required|string|size:11|regex:/^[0-9]+$/',
-            'address' => 'required',
-            'salary' => 'required|numeric',
-            'description' => 'required'
-        ], [
-            'position.required' => 'Заполните это поле',
-            'company_name.required' => 'Заполните это поле',
-            'phone.required' => 'Заполните это поле',
-            'phone.string' => 'Введите номер телефона',
-            'phone.size' => 'Введите номер телефона',
-            'phone.regex' => 'Введите номер телефона',
-            'address.required' => 'Заполните это поле',
-            'salary.required' => 'Заполните это поле',
-            'salary.numeric' => 'Поле должно быть числом',
-            'description.required' => 'Заполните это поле'
-        ]);
+        $data = $request->validated();
         if ($request->hasFile('logo')) {
             $path = 'storage/'.$request->file('logo')->store('images', 'public');
         } else {
@@ -88,36 +69,16 @@ class VacancyController extends Controller
         return view('create_vacancy', compact('vacancy', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(VacancyRequest $request, $id)
     {
         $vacancy = Vacancy::findOrFail($id);
 
-        $data = $request->validate([
-            'position' => 'required',
-            'company_name' => 'required',
-            'logo' => 'nullable',
-            'phone' => 'required|string|size:11|regex:/^[0-9]+$/',
-            'address' => 'required',
-            'salary' => 'required|numeric',
-            'description' => 'required'
-        ], [
-            'position.required' => 'Заполните это поле',
-            'company_name.required' => 'Заполните это поле',
-            'phone.required' => 'Заполните это поле',
-            'phone.string' => 'Введите номер телефона',
-            'phone.size' => 'Введите номер телефона',
-            'phone.regex' => 'Введите номер телефона',
-            'address.required' => 'Заполните это поле',
-            'salary.required' => 'Заполните это поле',
-            'salary.numeric' => 'Поле должно быть числом',
-            'description.required' => 'Заполните это поле'
-        ]);
+        $data = $request->validated();
         if ($request->hasFile('logo')) {
             $path = 'storage/'.$request->file('logo')->store('images', 'public');
             $data['logo'] = $path;
-        } else {
-            $path = 'assets/images\company-logo.png';
         }
+
         $vacancy->update($data);
 
         $datasecond = $request->validate([

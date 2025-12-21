@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\View;
+use App\Http\Requests\RegestrationRequest;
 
 class UserController extends Controller
 {
@@ -16,18 +17,9 @@ class UserController extends Controller
         return view('registration');
     }
 
-    public function createUser(Request $request)
+    public function createUser(RegestrationRequest $request)
     {
-        $data = $request->validate([
-            'user_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => ['required', 'min:6', 'confirmed'],
-            'role' => 'required'
-        ],[
-            'email.unique' => 'Пользователь с таким email уже существует',
-            'password.min' => 'Пароль должен содержать минимум 6 символов',
-            'password.confirmed' => 'Пароли не совпадают',
-        ]);
+        $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 

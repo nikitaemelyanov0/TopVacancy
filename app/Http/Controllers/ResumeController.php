@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ResumeRequest;
 
 class ResumeController extends Controller
 {
@@ -19,35 +20,9 @@ class ResumeController extends Controller
         return view('create_resume', compact('resume'));
     }
 
-    public function createResume(Request $request)
+    public function createResume(ResumeRequest $request)
     {
-        $data = $request->validate([
-            'user_id' => '',
-            'profession' => 'required',
-            'photo' => 'nullable',
-            'phone' => 'required|string|size:11|regex:/^[0-9]+$/',
-            'gender' => 'required',
-            'city' => 'required',
-            'date_of_birth' => 'required',
-            'salary_expectation' => 'required|numeric',
-            'education' => 'required',
-            'educational_institution' => 'required',
-            'description' => 'required',
-        ], [
-            'profession.required' => 'Заполните это поле',
-            'phone.required' => 'Заполните это поле',
-            'phone.string' => 'Введите номер телефона',
-            'phone.size' => 'Введите номер телефона',
-            'phone.regex' => 'Введите номер телефона',
-            'gender.required' => 'Укажите ваш пол',
-            'city.required' => 'Заполните это поле',
-            'date_of_birth.required' => 'Заполните это поле',
-            'salary_expectation.required' => 'Заполните это поле',
-            'salary_expectation.numeric' => 'Поле должно быть числом',
-            'education.required' => 'Укажите ваше образование',
-            'educational_institution.required' => 'Заполните это поле',
-            'description.required' => 'Заполните это поле',
-        ]);
+        $data = $request->validated();
         if ($request->hasFile('photo')) {
             $path = 'storage/'.$request->file('photo')->store('images', 'public');
         } else {
@@ -82,42 +57,16 @@ class ResumeController extends Controller
         else return redirect('/');
     }
 
-    public function update(Request $request, $id)
+    public function update(ResumeRequest $request, $id)
     {
         $resume = Resume::findOrFail($id);
 
-        $data = $request->validate([
-            'profession' => 'required',
-            'photo' => 'nullable',
-            'phone' => 'required|string|size:11|regex:/^[0-9]+$/',
-            'gender' => 'required',
-            'city' => 'required',
-            'date_of_birth' => 'required',
-            'salary_expectation' => 'required|numeric',
-            'education' => 'required',
-            'educational_institution' => 'required',
-            'description' => 'required',
-        ], [
-            'profession.required' => 'Заполните это поле',
-            'phone.required' => 'Заполните это поле',
-            'phone.string' => 'Введите номер телефона',
-            'phone.size' => 'Введите номер телефона',
-            'phone.regex' => 'Введите номер телефона',
-            'gender.required' => 'Укажите ваш пол',
-            'city.required' => 'Заполните это поле',
-            'date_of_birth.required' => 'Заполните это поле',
-            'salary_expectation.required' => 'Заполните это поле',
-            'salary_expectation.numeric' => 'Поле должно быть числом',
-            'education.required' => 'Укажите ваше образование',
-            'educational_institution.required' => 'Заполните это поле',
-            'description.required' => 'Заполните это поле',
-        ]);
+        $data = $request->validated();
         if ($request->hasFile('photo')) {
             $path = 'storage/'.$request->file('photo')->store('images', 'public');
             $data['photo'] = $path;
-        } else {
-            $path = 'assets/images\company-logo.png';
         }
+
         $resume->update($data);
 
         return redirect('resume/'.$resume->id);
