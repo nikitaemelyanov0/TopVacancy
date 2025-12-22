@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vacancies', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Company::class)->constrained('companies')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('position');
-            $table->string('salary')->nullable();
-            $table->text('description');
+            $table->foreignIdFor(\App\Models\User::class)->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('grade');
+            $table->text('message');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vacancies');
+        Schema::dropIfExists('reviews');
     }
 };

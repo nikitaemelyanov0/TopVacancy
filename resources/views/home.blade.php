@@ -28,7 +28,7 @@
                         <h2 class="font-black-18px">{{$vacancy->position}}</h2>
                         <p class="font-black-17px">{{$vacancy->salary}}₽ в месяц</p>
                         <hr>    
-                        <p class="font-black-15px">{{$vacancy->company_name.', '.$vacancy->address}}</p>
+                        <p class="font-black-15px">{{$vacancy->company->company_name.', '.$vacancy->company->address}}</p>
                     </div>
                 </a>
             @endforeach

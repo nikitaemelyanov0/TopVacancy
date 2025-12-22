@@ -4,12 +4,11 @@
 
 @section('content')
    <div class="application wrapper" style="min-height: 80vh">
-        @if($currentuser->vacancies->count()==0)
+        @if($vacancies==false || $vacancies->count()==0)
             <h2 class="font-black-20px">У вас еще нет вакансий</h2>
         @else
             <h2 class="font-black-20px" style="margin-bottom: 30px">Ваши вакансии</h2>
-        @endif
-        @foreach($currentuser->vacancies as $vacancy)
+            @foreach($vacancies as $vacancy)
             <a href="{{route('vacancy.index', $vacancy->id)}}" class="a-vacancy"><div class="card-vacancy">
                 <h4 class="font-black-23px">{{$vacancy->position}}</h4>
                 <div class="card-vacancy-tags">
@@ -23,8 +22,8 @@
                     </ul>
                 </div>
                 <ul class="card-vacancy-list font-black-16px">
-                    {{$vacancy->company_name}}
-                    <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->address}}</li>
+                    {{$vacancy->company->company_name}}
+                    <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->company->address}}</li>
                 </ul>
             </div></a>
                 @foreach($vacancy->resumes as $resume)
@@ -43,9 +42,10 @@
                             <p class="font-black-high-17px">{{$resume->gender}} {{$resume->date_of_birth}}</p>
                             <span class="font-black-high-17px">{{$resume->city}}</span>
                         </div>
-                        </div>
-                    </div></a>
+                    </div>
+                </div></a>
                 @endforeach
-        @endforeach
+                @endforeach
+        @endif
    </div>
 @endsection

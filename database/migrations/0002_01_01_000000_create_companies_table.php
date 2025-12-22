@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resumes', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('profession');
-            $table->string('photo');
+            $table->string('company_name');
+            $table->string('email');
             $table->string('phone');
-            $table->enum('gender', ['Мужчина', 'Женщина']);
-            $table->string('city');
-            $table->date('date_of_birth');
-            $table->string('salary_expectation')->nullable();
-            $table->string('education');
-            $table->string('educational_institution');
+            $table->string('logo');
             $table->text('description');
+            $table->string('address');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resumes');
+        Schema::dropIfExists('companies');
     }
 };

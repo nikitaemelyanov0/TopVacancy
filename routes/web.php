@@ -6,6 +6,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompanyController;
 
 Route::get('/', [VacancyController::class, 'vacanciesAtHome'])->name('home');
 
@@ -30,6 +31,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('resume/{id}/edit', [ResumeController::class, 'update'])->name('resume.update');
     
     Route::delete('resume/{id}/delete', [ResumeController::class, 'destroy'])->name('resume.destroy');
+    
+    Route::get('/create_company', [CompanyController::class, 'createCompanyIndex'])->name('create_company.index');
+    Route::post('/create_company', [CompanyController::class, 'createCompany']);
+
+    Route::get('company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+    Route::put('company/edit', [CompanyController::class, 'update'])->name('company.update');
+
+    Route::delete('company/delete', [CompanyController::class, 'destroy'])->name('company.destroy');
     
     Route::get('/create_vacancy', [VacancyController::class, 'createVacancyIndex'])->name('create_vacancy.index');
     Route::post('/create_vacancy', [VacancyController::class, 'createVacancy']);

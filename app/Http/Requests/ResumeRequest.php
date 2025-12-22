@@ -28,7 +28,7 @@ class ResumeRequest extends FormRequest
             'gender' => 'required',
             'city' => 'required|max:30',
             'date_of_birth' => 'required',
-            'salary_expectation' => 'required|numeric|max:100000000',
+            'salary_expectation' => 'nullable|numeric|max:100000000',
             'education' => 'required',
             'educational_institution' => 'required',
             'description' => 'required|max:4000',

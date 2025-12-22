@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Vacancy;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,9 @@ class VacancyController extends Controller
         if (Auth::user()->role=='applicant') {
             return redirect('/');
         }
+        if (!Company::where('user_id', Auth::id())->exists()){
+            return redirect()->route('create_company.index');
+        }
         $vacancy = new Vacancy();
         $categories = Category::all();
         return view('create_vacancy', compact(['vacancy', 'categories']));
@@ -26,13 +30,8 @@ class VacancyController extends Controller
     public function createVacancy(VacancyRequest $request)
     {
         $data = $request->validated();
-        if ($request->hasFile('logo')) {
-            $path = 'storage/'.$request->file('logo')->store('images', 'public');
-        } else {
-            $path = 'assets/images\company-logo.png';
-        }
-        $data['logo'] = $path;
-        $data['user_id'] = Auth::id();
+        $company = (Company::where('user_id', '=', Auth::id())->first());
+        $data['company_id'] = $company->id;
         $vacancy = Vacancy::create($data);
 
         $datasecond = $request->validate([
@@ -51,7 +50,7 @@ class VacancyController extends Controller
         $categories = $vacancy->categories;
 
         $vacancies = Vacancy::Where('position', 'like', '%'.$vacancy->position.'%')->get();
-
+        
         return view('vacancy', compact(['categories', 'vacancy', 'vacancies']));
     }
 
@@ -74,10 +73,6 @@ class VacancyController extends Controller
         $vacancy = Vacancy::findOrFail($id);
 
         $data = $request->validated();
-        if ($request->hasFile('logo')) {
-            $path = 'storage/'.$request->file('logo')->store('images', 'public');
-            $data['logo'] = $path;
-        }
 
         $vacancy->update($data);
 
@@ -94,9 +89,7 @@ class VacancyController extends Controller
     public function vacanciesAtHome() {
         $vacancies = Vacancy::orderBy('created_at', 'desc')->take(8)->get();
         $categories = Category::all();
-        $companies = Vacancy::select('vacancies.*')
-        ->join(DB::raw('(SELECT MIN(id) as id FROM vacancies GROUP BY company_name) as grouped'), 'vacancies.id', '=', 'grouped.id')
-        ->get();
+        $companies = Company::all();
 
         $professions = Vacancy::selectRaw(
             'position, 
@@ -120,8 +113,9 @@ class VacancyController extends Controller
         if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
                 $ip = 'Не удалось получить IP';
         }
-        $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
-        $location = $response->json();
+        // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+        // $location = $response->json();
+        $location['city'] = 'Челябинск';
         
         $query = Vacancy::query();
 

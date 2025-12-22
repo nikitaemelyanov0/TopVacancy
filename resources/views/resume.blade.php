@@ -11,7 +11,13 @@
             <div class="resume-header-right">
                 <h1 class="font-black-23px">{{$resume->profession}}</h1>
                 <h2 class="font-black-21px">{{$user->user_name}}</h2>
-                <h3 class="font-black-21px">{{$resume->salary_expectation}}₽</h3>
+                <h3 class="font-black-21px">
+                    @if($resume->salary_expectation==null)
+                        Не указано
+                    @else
+                        {{$resume->salary_expectation}}₽ за месяц
+                    @endif
+                </h3>
                 <p class="font-black-high-17px">{{$resume->gender}} {{$resume->date_of_birth}}</p>
                 <span class="font-black-high-17px">г. {{$resume->city}}</span>
             </div>

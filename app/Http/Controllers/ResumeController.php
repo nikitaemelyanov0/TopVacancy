@@ -23,6 +23,7 @@ class ResumeController extends Controller
     public function createResume(ResumeRequest $request)
     {
         $data = $request->validated();
+        
         if ($request->hasFile('photo')) {
             $path = 'storage/'.$request->file('photo')->store('images', 'public');
         } else {

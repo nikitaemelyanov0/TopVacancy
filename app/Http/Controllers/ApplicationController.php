@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Resume_vacancy;
 use App\Models\Vacancy;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,12 @@ class ApplicationController extends Controller
     public function applicationIndex()
     {
         if(Auth::user()->role=='employer') {
-            return view('application');
+            $userscompany = Company::where('user_id', '=', Auth::id())->first();
+            if ($userscompany==null) {
+                $vacancies = false;
+            }
+            else $vacancies = Vacancy::where('company_id', '=', $userscompany->id)->get();
+            return view('application', compact('vacancies'));
         }
         else return redirect('/');
     }

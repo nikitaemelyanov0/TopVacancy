@@ -6,14 +6,20 @@
     <div class="contacts hide" id="{{$vacancy->id}}">
         <div class="contacts-inner">
             <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
-            <p class="font-black-17px">Номер телефона: {{$vacancy->phone}}</p>
-            <p class="font-black-17px">Почта: {{$vacancy->user->email}}</p>
+            <p class="font-black-17px">Номер телефона: {{$vacancy->company->phone}}</p>
+            <p class="font-black-17px">Почта: {{$vacancy->company->email}}</p>
         </div>
     </div>
     <div class="vacancy-header wrapper">
         <div class="vacancy-header-left">
             <h1 class="font-black-30px">{{$vacancy->position}}</h1>
-            <h2 class="font-black-21px">{{$vacancy->salary}}₽ за месяц</h2>
+            <h2 class="font-black-21px">
+                @if($vacancy->salary==null)
+                    Не указано
+                @else
+                    {{$vacancy->salary}}₽ за месяц
+                @endif
+            </h2>
             <ul class="font-black-17px">
                 @foreach($categories as $category)
                     <li>{{$category->category_type.': '.$category->category_name}}</li>
@@ -28,8 +34,8 @@
             </div>
         </div>
         <div class="vacancy-header-right">
-            <img src="{{asset($vacancy->logo)}}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
-            <h3 class="font-black-19px">{{$vacancy->company_name}}</h3>
+            <img src="{{asset($vacancy->company->logo)}}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
+            <h3 class="font-black-19px">{{$vacancy->company->company_name}}</h3>
         </div>
     </div>
     <div class="vacancy-description wrapper">
@@ -38,8 +44,8 @@
             Вакансия опубликована {{$vacancy->created_at}}<br>
             {{$vacancy->address}}
         </p>
-        @if($currentuser!=null)
-            @if($currentuser->id==$vacancy->user_id || $currentuser->role=='admin')
+        @if(Auth::user()!=null)
+            @if(Auth::user()->id==$vacancy->company->user_id || $currentuser->role=='admin')
                 <div class="btns-update-delete">
                     <a href="{{route('vacancy.edit', $vacancy->id)}}" class="btn-update font-white-17px">Изменить</a>
                     <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px">

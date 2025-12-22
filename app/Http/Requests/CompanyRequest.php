@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VacancyRequest extends FormRequest
+class CompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,12 @@ class VacancyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_id' => '',
-            'position' => 'required|max:80',
-            'salary' => 'nullable|numeric|max:100000000',
+            'user_id' => '',
+            'company_name' => 'required|max:40',
+            'email' => 'required',
+            'logo' => 'nullable',
+            'phone' => 'required|size:11|regex:/^[0-9]+$/',
+            'address' => 'required|max:200',
             'description' => 'required|max:4000'
         ];
     }
@@ -33,7 +36,8 @@ class VacancyRequest extends FormRequest
     {
         return [
             'required' => 'Обязательно для заполнения',
-            'numeric' => 'Ввод должен быть числом',
+            'size' => 'Номер телефона должен состоять из 11 цифр',
+            'regex' => 'Номер телефона должен состоять из цифр',
             'max' => 'Максимум :max сиволов'
         ];
     }
