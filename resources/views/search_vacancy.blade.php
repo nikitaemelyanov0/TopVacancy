@@ -11,7 +11,7 @@
     </div>
     <div class="search-vacancy-body wrapper">
         <div class="search-vacancy-left">
-            <h2 class="font-black-20px-regular">Найдено {{count($vacancies)}} вакансий</h2>
+            <h2 class="font-black-20px-regular">Найдено {{$vacancies->total()}} вакансий</h2>
             <p class="hide-filters font-blue-16px">Скрыть фильтры</p>
             <div class="search-vacancy-sort">
                 <select name="sort" id="sort" onchange="this.form.submit()" class="search-vacancy-sort-select font-black-17px">
@@ -90,8 +90,8 @@
                         </ul>
                     </div>
                     <ul class="card-vacancy-list font-black-16px">
-                        <li>{{$vacancy->company_name}}</li>
-                        <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->address}}</li>
+                        <li>{{$vacancy->company->company_name}}</li>
+                        <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->company->address}}</li>
                     </ul></a>
                         <div class="btns-aplication-contacts-small">
                             <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 227px);">
@@ -101,15 +101,16 @@
                             <button class="btn-contacts-small font-blue-17px" id="{{$vacancy->id}}">Контакты</button>
                         </div>
                 </div>
-
+                
                 <div class="contacts hide" id="{{$vacancy->id}}">
                     <div class="contacts-inner">
                         <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
-                        <p class="font-black-17px">Номер телефона: {{$vacancy->phone}}</p>
-                        <p class="font-black-17px">Почта: {{$vacancy->user->email}}</p>
+                        <p class="font-black-17px">Номер телефона: {{$vacancy->company->phone}}</p>
+                        <p class="font-black-17px">Почта: {{$vacancy->company->email}}</p>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
+    {{ $vacancies->links('vendor.pagination.default') }}
 @endsection

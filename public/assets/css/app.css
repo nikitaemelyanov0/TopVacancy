@@ -236,6 +236,15 @@
     font-size: 16px;
 }
 
+.font-blue-19px{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    color: #2584C9;
+    font-size: 19px;
+}
+
 .wrapper{
     max-width: 1172px;
     padding-inline: 16px;
@@ -997,6 +1006,18 @@ em{
 
 .search-vacancy-sort-select{
     background-color: white;
+}
+
+.pagination-container{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 @media (max-width: 1120px) {

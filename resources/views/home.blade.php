@@ -26,7 +26,13 @@
                 <a href="{{route('vacancy.index', $vacancy->id)}}">
                     <div class="card hover">
                         <h2 class="font-black-18px">{{$vacancy->position}}</h2>
-                        <p class="font-black-17px">{{$vacancy->salary}}₽ в месяц</p>
+                        <p class="font-black-17px">
+                            @if($vacancy->salary==null)
+                                Не указано
+                            @else
+                                {{$vacancy->salary}}₽ за месяц
+                            @endif
+                        </p>
                         <hr>    
                         <p class="font-black-15px">{{$vacancy->company->company_name.', '.$vacancy->company->address}}</p>
                     </div>

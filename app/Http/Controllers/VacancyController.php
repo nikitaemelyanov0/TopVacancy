@@ -134,11 +134,16 @@ class VacancyController extends Controller
                 $query->where('salary', '>=', $request->salary);
         }
 
-        if ($request->has('address')) {
-            $query->where('address', 'like', '%'.$request->address.'%');
+        if ($request->filled('address')) {
+            $query->whereHas('company', function ($q) use ($request) {
+                $q->where('address', 'like', '%' . $request->address . '%');
+            });
+        } else {
+            $query->whereHas('company', function ($q) use ($location) {
+                $q->where('address', 'like', '%' . $location['city'] . '%');
+            });
         }
-        else $query->where('address', 'like', '%'.$location['city'].'%');
-
+        
         $sort = $request->get('sort', 'newest');
 
         $vacancies = $query
@@ -150,7 +155,7 @@ class VacancyController extends Controller
             })
             ->when($sort === 'newest', function($query) {
                 return $query->latest();
-            })->get();
+            })->paginate(30);
         
         $categories = Category::all();
 
