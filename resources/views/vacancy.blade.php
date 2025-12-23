@@ -33,10 +33,10 @@
                 <button class="btn-contacts font-blue-17px" id="{{$vacancy->id}}">Контакты</button>
             </div>
         </div>
-        <div class="vacancy-header-right">
+        <a href="{{route('company.index', $vacancy->company)}}" class="vacancy-header-right">
             <img src="{{asset($vacancy->company->logo)}}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
             <h3 class="font-black-19px">{{$vacancy->company->company_name}}</h3>
-        </div>
+        </a>
     </div>
     <div class="vacancy-description wrapper">
         <p class="vacancy-description-text font-black-high-17px">{{$vacancy->description}}</p>
@@ -75,8 +75,8 @@
                                 </ul>
                             </div>
                             <ul class="card-vacancy-list font-black-16px">
-                                <li>{{$vacancyrelete->company_name}}</li>
-                                <li class="card-vacancy-list-locate"><img src="public/images/location-blue.png" alt="">{{$vacancyrelete->address}}</li>
+                                <li>{{$vacancyrelete->company->company_name}}</li>
+                                <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancyrelete->company->address}}</li>
                             </ul></a>
                             <div class="btns-aplication-contacts-small">
                                 <form action="{{route('application.store', $vacancyrelete->id)}}" method="POST" style="width: min(100%, 227px);">

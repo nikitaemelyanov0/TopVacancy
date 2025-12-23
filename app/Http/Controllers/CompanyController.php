@@ -6,9 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use App\Models\Review;
+use App\Models\Vacancy;
 
 class CompanyController extends Controller
 {
+    public function CompanyIndex(Company $company)
+    {   
+        // $reviews = Review::where('company_id', $company->id)->get();
+        $vacancies = Vacancy::where('company_id', $company->id)->get();
+        return view('company', compact('company', 'vacancies'));
+    }
+    
     public function createCompanyIndex()
     {
         if (Auth::user()->role=='applicant') {
@@ -34,10 +43,12 @@ class CompanyController extends Controller
         return redirect()->route('create_vacancy.index', );
     }
 
-    public function edit()
+    public function edit(Company $company)
     {
-        $company = Company::where('user_id', Auth::id())->first();
-        return view('create_company', compact('company'));
+        if($company->user_id==Auth::id() || Auth::user()->role=='admin') {
+            return view('create_company', compact('company'));
+        }
+        else return redirect('/');
     }
 
     public function update(CompanyRequest $request)

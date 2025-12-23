@@ -80,7 +80,13 @@
                 <a href="{{route('vacancy.index', $vacancy->id)}}"><div class="card-vacancy">
                     <h4 class="font-black-23px">{{$vacancy->position}}</h4>
                     <div class="card-vacancy-tags">
-                        <h5 class="font-black-18px">{{$vacancy->salary}}₽ за месяц</h5>
+                        <h5 class="font-black-18px">
+                            @if($vacancy->salary==null)
+                                Не указано
+                            @else
+                                {{$vacancy->salary}}₽ за месяц
+                            @endif
+                        </h5>
                         <ul class="font-black-16px">
                         @foreach($vacancy->categories as $category)
                             @if($category->category_type=='Опыт работы')

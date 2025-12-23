@@ -27,7 +27,7 @@
                     <ul>
                         @if($currentuser->role =='employer')
                             <a href="{{route('application.index')}}"><li class="font-black-17px">Ваши вакансии и отклики</li></a>
-                            <a href="{{route('company.edit')}}"><li class="font-black-17px">Ваша компания</li></a>
+                            <a href="{{route('company.index', Auth::user()->company)}}"><li class="font-black-17px">Ваша компания</li></a>
                         @else
                             @if($currentuser->resume)
                                 <a href="{{route('resume.index', $currentuser->resume->id)}}"><li class="font-black-17px">Ваше резюме</li></a>

@@ -44,7 +44,7 @@
         <h1 class="font-black-20px title-second">Компании</h1>
         <div class="cards-companies">
             @foreach($companies->take(6) as $company)
-                <a href="{{route('search_company', $company->company_name)}}"><div class="card-company hover">
+                <a href="{{route('company.index', $company)}}"><div class="card-company hover">
                     <img src="{{asset($company->logo)}}" alt="" style="height: 63px; width: 63px; object-fit: cover;">
                     <h3 class="font-light-16px">{{$company->company_name}}</h3>
                 </div></a>

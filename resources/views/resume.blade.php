@@ -19,7 +19,9 @@
                     @endif
                 </h3>
                 <p class="font-black-high-17px">{{$resume->gender}} {{$resume->date_of_birth}}</p>
-                <span class="font-black-high-17px">г. {{$resume->city}}</span>
+                 <ul class="card-vacancy-list font-black-16px">
+                    <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$resume->city}}</li>
+                </ul>
             </div>
         </div>
         <div class="resume-body">

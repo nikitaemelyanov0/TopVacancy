@@ -23,6 +23,8 @@ Route::post('/authorization', [UserController::class, 'loginPost']);
 Route::get('/search_vacancy',[VacancyController::class, 'searchVacancy'])->name('search_vacancy');
 Route::get('/search_vacancy/{company}',[VacancyController::class, 'searchCompany'])->name('search_company');
 
+Route::get('/company/{company}', [CompanyController::class, 'CompanyIndex'])->name('company.index');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/create_resume', [ResumeController::class, 'createResumeIndex'])->name('create_resume.index');
     Route::post('/create_resume', [ResumeController::class, 'createResume']);
@@ -35,8 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create_company', [CompanyController::class, 'createCompanyIndex'])->name('create_company.index');
     Route::post('/create_company', [CompanyController::class, 'createCompany']);
 
-    Route::get('company/edit', [CompanyController::class, 'edit'])->name('company.edit');
-    Route::put('company/edit', [CompanyController::class, 'update'])->name('company.update');
+    Route::get('company/{company}/edit', [CompanyController::class, 'edit'])->name('company.edit');
+    Route::put('company/{company}/edit', [CompanyController::class, 'update'])->name('company.update');
 
     Route::delete('company/delete', [CompanyController::class, 'destroy'])->name('company.destroy');
     

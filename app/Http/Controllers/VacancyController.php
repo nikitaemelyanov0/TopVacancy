@@ -161,10 +161,4 @@ class VacancyController extends Controller
 
         return view('search_vacancy', compact('categories', 'vacancies'));
     }
-
-    public function searchCompany($company){
-        $vacancies = Vacancy::where('company_name', '=', $company)->get();
-        $categories = Category::all();
-        return view('search_vacancy', compact('categories', 'vacancies'));
-    }
 }
