@@ -104,3 +104,41 @@ try{
 }catch(error) {
     console.log(error);
 }
+
+const stars = document.querySelectorAll('.star');
+const ratingInput = document.getElementById('rating-value');
+let selectedRating = 0;
+
+function renderStars(rating) {
+    stars.forEach((star, index) => {
+        const starNumber = index + 1;
+        star.classList.remove('full', 'half');
+
+        if (rating >= starNumber) {
+            star.classList.add('full');
+        } else if (rating >= starNumber - 0.5) {
+            star.classList.add('half');
+        }
+    });
+}
+
+stars.forEach(star => {
+    star.addEventListener('mousemove', (e) => {
+        const rect = star.getBoundingClientRect();
+        const isHalf = (e.clientX - rect.left) < rect.width / 2;
+        const value = star.dataset.index - (isHalf ? 0.5 : 0);
+        renderStars(value);
+    });
+
+    star.addEventListener('click', (e) => {
+        const rect = star.getBoundingClientRect();
+        const isHalf = (e.clientX - rect.left) < rect.width / 2;
+        selectedRating = star.dataset.index - (isHalf ? 0.5 : 0);
+        ratingInput.value = selectedRating;
+        renderStars(selectedRating);
+    });
+});
+
+document.getElementById('rating').addEventListener('mouseleave', () => {
+    renderStars(selectedRating);
+});

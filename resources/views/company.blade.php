@@ -19,7 +19,11 @@
                 </ul>
                 <ul class="card-vacancy-list font-black-16px">
                     <li class="card-vacancy-list-locate"></li>
-                    <li class="card-vacancy-list-locate" style="margin-top: 22px">{{$company->grade}} отзывов</li>
+                    @if($reviews->count()==0)
+                        <li class="card-vacancy-list-locate" style="margin-top: 22px">Нет отзывов</li>
+                    @else
+                        <li class="card-vacancy-list-locate" style="margin-top: 22px">{{$reviews->count()}} отзыва</li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -70,13 +74,34 @@
                         <button class="btn-contacts-small font-blue-17px">Контакты</button>
                     </div>
                 </div>
-        @endforeach
-        <div class="contacts hide" id="{{$vacancy->id}}">
-                <div class="contacts-inner">
-                <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
-                <p class="font-black-17px">Номер телефона: {{$vacancy->company->phone}}</p>
-                <p class="font-black-17px">Почта: {{$vacancy->company->email}}</p>
-            </div>
+
+                <div class="contacts hide" id="{{$vacancy->id}}">
+                    <div class="contacts-inner">
+                    <img src="{{asset('assets/images/cross.png')}}" alt="" class="cross" id="{{$vacancy->id}}">
+                    <p class="font-black-17px">Номер телефона: {{$vacancy->company->phone}}</p>
+                    <p class="font-black-17px">Почта: {{$vacancy->company->email}}</p>
+                </div>
         </div>
+        @endforeach
+        <h3 class="font-black-19px" style="margin-bottom: 30px; margin-top: 60px;">Отзывы</h3>
+        <a href="{{ route('review.index', $company) }}"><button class="btn-aplication-small font-white-17px" style="width: min(100%, 170px);" type="submit">Оставить отзыв</button></a>
+        @foreach($reviews as $review)
+            <div class="review">
+                <ul class="line_text">  
+                    <li class="font-black-20px">{{ $review->user->user_name }}</li>
+                    <li class="font-black-18px">{{ $review->grade }}</li>
+                    <div class="rating-view" style=" margin-left: -10px;">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <span class="
+                                star
+                                {{ $review->grade >= $i ? 'full' : '' }}
+                                {{ $review->grade >= $i - 0.5 && $review->grade < $i ? 'half' : '' }}
+                            " style="width: 18px; margin-bottom: -4px;"></span>
+                        @endfor
+                    </div>
+                </ul>
+                <p class="font-black-high-17px">{{ $review->message }}</p>
+            </div>
+        @endforeach
     </div>
 @endsection

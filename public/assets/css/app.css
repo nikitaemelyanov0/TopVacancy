@@ -1020,6 +1020,52 @@ em{
     gap: 15px;
 }
 
+.rating {
+    display: flex;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.star{
+    width: 28px;
+    height: 28px;
+    background: url('/assets/images/star-empty.svg') no-repeat center;
+    background-size: contain;
+    position: relative;
+}
+
+.star.full {
+    background-image: url('/assets/images/star-full.svg');
+}
+
+.star.half::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/images/star-half.svg') no-repeat center;
+    background-size: contain;
+}
+
+.rating-view {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-view .star {
+    pointer-events: none;
+}
+
+.line_text{
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.review{
+    margin-top: 50px;
+}
+
 @media (max-width: 1120px) {
     .cards {
         display: grid;

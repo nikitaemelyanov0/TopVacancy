@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     protected $guarded = false;
+
+    public function reviews()
+    {
+        return $this->belongsToMany(Review::class);
+    }
 }

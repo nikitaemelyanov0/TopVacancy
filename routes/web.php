@@ -7,6 +7,7 @@ use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', [VacancyController::class, 'vacanciesAtHome'])->name('home');
 
@@ -52,6 +53,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/application',[ApplicationController::class, 'applicationIndex'])->name('application.index');
     Route::post('/application/{id}',[ApplicationController::class, 'makeApplication'])->name('application.store');
+
+    Route::get('/review/{company}',[ReviewController::class, 'createReviewIndex'])->name('review.index');
+    Route::post('/review/{company}',[ReviewController::class, 'createReview'])->name('review.store');
 
     Route::get('delete_user', [UserController::class, 'delete_user']);
     Route::post('delete_user', [UserController::class, 'delete_user'])->name('delete_user');

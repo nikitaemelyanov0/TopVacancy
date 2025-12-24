@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
-use App\Models\Review;
 use App\Models\Vacancy;
+use App\Models\Review;
 
 class CompanyController extends Controller
 {
     public function CompanyIndex(Company $company)
     {   
-        // $reviews = Review::where('company_id', $company->id)->get();
+        $reviews = $company->reviews;
         $vacancies = Vacancy::where('company_id', $company->id)->get();
-        return view('company', compact('company', 'vacancies'));
+        return view('company', compact('company', 'vacancies', 'reviews'));
     }
     
     public function createCompanyIndex()

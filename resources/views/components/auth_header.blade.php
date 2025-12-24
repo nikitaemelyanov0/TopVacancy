@@ -9,28 +9,30 @@
                 <p class="font-white-16px" style="text-decoration: underline;">{{$location['city']}}</p>
             </div>
             <div class="header-btns header-btns-second">
-                @if($currentuser->role =='admin')
+                @if(Auth::user()->role =='admin')
                     <a href="{{route('admin')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Админка</button></a>
                 @endif
-                @if($currentuser->role =='applicant')
-                    @if($currentuser->resume)
-                        <a href="{{route('resume.index', $currentuser->resume->id)}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Ваше резюме</button></a>
+                @if(Auth::user()->role =='applicant')
+                    @if(Auth::user()->resume)
+                        <a href="{{route('resume.index', Auth::user()->resume->id)}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Ваше резюме</button></a>
                     @else
                         <a href="{{route('create_resume.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Создать резюме</button></a>
                     @endif
                 @endif
-                @if($currentuser->role =='employer')
+                @if(Auth::user()->role =='employer')
                     <a href="{{route('create_vacancy.index')}}"><button class="btn-blue font-white-16px btn-create-vacancy show hover">Создать вакансию</button></a>
                 @endif
                 <img src="{{asset('assets/images/burger.png')}}" alt="" class="burger">
                 <div class="burger-window hide">
                     <ul>
-                        @if($currentuser->role =='employer')
+                        @if(Auth::user()->role =='employer')
                             <a href="{{route('application.index')}}"><li class="font-black-17px">Ваши вакансии и отклики</li></a>
-                            <a href="{{route('company.index', Auth::user()->company)}}"><li class="font-black-17px">Ваша компания</li></a>
+                            @if(Auth::user()->company)
+                                <a href="{{route('company.index', Auth::user()->company)}}"><li class="font-black-17px">Ваша компания</li></a>
+                            @endif
                         @else
-                            @if($currentuser->resume)
-                                <a href="{{route('resume.index', $currentuser->resume->id)}}"><li class="font-black-17px">Ваше резюме</li></a>
+                            @if(Auth::user()->resume)
+                                <a href="{{route('resume.index', Auth::user()->resume->id)}}"><li class="font-black-17px">Ваше резюме</li></a>
                             @else
                                 <a href="{{route('create_resume.index')}}"><li class="font-black-17px">Создать резюме</li></a>
                             @endif

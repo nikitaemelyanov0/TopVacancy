@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('company_review', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class)->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->decimal('grade', 2, 1);
-            $table->text('message')->nullable();
-            $table->timestamps();
+            $table->foreignIdFor(\App\Models\Company::class)->constrained('companies')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Review::class)->constrained('reviews')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('company_review');
     }
 };
