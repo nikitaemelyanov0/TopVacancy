@@ -21,12 +21,8 @@ class ReviewController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = Auth::id();
-        $review = Review::create($data);
-        $datasecond = [
-            'review_id' => $review->id,
-            'company_id' => $company->id
-        ];
-        Company_review::create($datasecond);
+        $data['company_id'] = $company->id;
+        Review::create($data);
         return redirect()->route('company.index', $company);
     }
 }

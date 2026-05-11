@@ -33,6 +33,10 @@
                     @error('user_name')
                         <p class="font-red-small">{{$message}}</p>
                     @enderror
+                    <label for="rules" class="font-black-16px" style="font-size: 15px">
+                        <input type="checkbox" name="rules" class="checkbox-input" style="margin-bottom: auto; margin-right: 7px;" required>
+                        Я согласен с <a href="#" class="font-blue-16px" style="font-size: 15px; font-weight: 400;">условиями</a> использования
+                    </label>
                     <button type="submit" class="btn-submit-reg font-white-17px">Отправить</button>
                 </form>
                 <div class="registration-bottom-text">

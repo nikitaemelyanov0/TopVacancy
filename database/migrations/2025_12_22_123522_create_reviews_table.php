@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Company::class)->constrained('companies')->onUpdate('cascade')->onDelete('cascade');
             $table->decimal('grade', 2, 1);
             $table->text('message')->nullable();
             $table->timestamps();
