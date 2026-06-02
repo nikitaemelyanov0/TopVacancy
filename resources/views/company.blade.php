@@ -86,8 +86,10 @@
         @if(!$reviews->isEmpty())
             <h3 class="font-black-19px" style="margin-bottom: 30px; margin-top: 60px;">Отзывы</h3>  
         @endif
-        @if(!Auth::user()->review()->where('company_id', $company->id)->exists() && $company->user_id != Auth::id())
-            <a href="{{ route('review.index', $company) }}"><button class="btn-aplication-small font-white-17px" style="width: min(100%, 170px);" type="submit">Оставить отзыв</button></a>  
+        @if(Auth::user())
+            @if(!Auth::user()->review()->where('company_id', $company->id)->exists() && $company->user_id != Auth::id())
+                <a href="{{ route('review.index', $company) }}"><button class="btn-aplication-small font-white-17px" style="width: min(100%, 170px);" type="submit">Оставить отзыв</button></a>  
+            @endif
         @endif
         @foreach($reviews as $review)
             <div class="review">
