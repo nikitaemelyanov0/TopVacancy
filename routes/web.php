@@ -64,3 +64,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('logout', [UserController:: class, 'logout'])->name('logout');
+
+Route::get('/rules', [UserController::class, 'rulesIndex'])->name('rules');

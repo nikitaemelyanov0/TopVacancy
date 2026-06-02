@@ -10,6 +10,6 @@ class Company extends Model
 
     public function reviews()
     {
-        return $this->belongsToMany(Review::class);
+        return $this->HasMany(Review::class);
     }
 }

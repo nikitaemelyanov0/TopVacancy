@@ -10,7 +10,7 @@
                 @method('PUT')  
             @endif
 
-            <h1 class="font-black-23px" style="margin-top: 40px">{{'Ваш отзыв на '.$company->company_name}}</h1>
+            <h1 class="font-black-23px" style="margin-top: 40px; margin-bottom: 30px;">{{'Ваш отзыв на '.$company->company_name}}</h1>
 
             <div class="rating" id="rating">
                 <input type="hidden" name="grade" id="rating-value" value="0">

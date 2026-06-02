@@ -39,7 +39,7 @@
         </a>
     </div>
     <div class="vacancy-description wrapper">
-        <p class="vacancy-description-text font-black-high-17px">{{$vacancy->description}}</p>
+        <p class="vacancy-description-text font-black-high-17px">{!! nl2br(e($vacancy->description)) !!}</p>
         <p class="vacancy-description-locate font-black-light-18px">
             Вакансия опубликована {{$vacancy->created_at}}<br>
             {{$vacancy->address}}

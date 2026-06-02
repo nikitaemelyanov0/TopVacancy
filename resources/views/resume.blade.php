@@ -29,7 +29,7 @@
             <p class="font-black-high-17px">Место учебы: {{$resume->educational_institution}}</p>
             <p class="font-black-high-17px">Номер телефона: {{$resume->phone}}</p>
             <p class="font-black-high-17px">Почта: {{$user->email}}</p>
-            <p class="font-black-high-17px">Обо мне: {{$resume->description}}</p>
+            <p class="font-black-high-17px">Обо мне: {!! nl2br(e($resume->description)) !!}</p>
         </div>
         @if($currentuser!=null)
             @if($currentuser->id==$resume->user_id || $currentuser->role=='admin')

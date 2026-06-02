@@ -138,7 +138,8 @@ class VacancyController extends Controller
             $query->whereHas('company', function ($q) use ($request) {
                 $q->where('address', 'like', '%' . $request->address . '%');
             });
-        } else {
+        } elseif (!$request->hasAny(['address', 'category', 'salary'])) {
+            // первое открытие страницы
             $query->whereHas('company', function ($q) use ($location) {
                 $q->where('address', 'like', '%' . $location['city'] . '%');
             });

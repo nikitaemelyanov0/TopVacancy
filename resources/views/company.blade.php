@@ -19,7 +19,7 @@
                 </ul>
                 <ul class="card-vacancy-list font-black-16px">
                     <li class="card-vacancy-list-locate"></li>
-                    @if($reviews->count()==0)
+                    @if($reviews->isEmpty())
                         <li class="card-vacancy-list-locate" style="margin-top: 22px">Нет отзывов</li>
                     @else
                         <li class="card-vacancy-list-locate" style="margin-top: 22px">{{$reviews->count()}} отзыва</li>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="resume-body">
-            <p class="font-black-high-17px">О нас: <br> {{$company->description}}</p>
+            <p class="font-black-high-17px">О нас: <br> {!! nl2br(e($company->description)) !!}</p>
         </div>
         @if(Auth::user()!=null)
             @if(Auth::user()->id==$company->user_id  || $currentuser->role=='admin')
@@ -83,8 +83,12 @@
                 </div>
         </div>
         @endforeach
-        <h3 class="font-black-19px" style="margin-bottom: 30px; margin-top: 60px;">Отзывы</h3>
-        <a href="{{ route('review.index', $company) }}"><button class="btn-aplication-small font-white-17px" style="width: min(100%, 170px);" type="submit">Оставить отзыв</button></a>
+        @if(!$reviews->isEmpty())
+            <h3 class="font-black-19px" style="margin-bottom: 30px; margin-top: 60px;">Отзывы</h3>  
+        @endif
+        @if(!Auth::user()->review()->where('company_id', $company->id)->exists() && $company->user_id != Auth::id())
+            <a href="{{ route('review.index', $company) }}"><button class="btn-aplication-small font-white-17px" style="width: min(100%, 170px);" type="submit">Оставить отзыв</button></a>  
+        @endif
         @foreach($reviews as $review)
             <div class="review">
                 <ul class="line_text">  

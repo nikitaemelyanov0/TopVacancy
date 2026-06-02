@@ -22,20 +22,17 @@
                     <input type="password" placeholder="Пароль" name="password" class="input-main font-grey-light-16px" value="{{old('password')}}">
                     <input type="password" placeholder="Пароль еще раз" name="password_confirmation" class="input-main font-grey-light-16px" value="{{old('password_confirmation')}}">
                     @error('user_name')
-                        <p class="font-red-small">{{$message}}</p>
-                    @enderror
-                    @error('password')
-                        <p class="font-red-small">{{$message}}</p>
+                        <p class="font-red-small">{{$message}}</p><br>
                     @enderror
                     @error('email')
-                        <p class="font-red-small">{{$message}}</p>
+                        <p class="font-red-small">{{$message}}</p><br>
                     @enderror
-                    @error('user_name')
-                        <p class="font-red-small">{{$message}}</p>
+                    @error('password')
+                        <p class="font-red-small">{{$message}}</p><br>
                     @enderror
                     <label for="rules" class="font-black-16px" style="font-size: 15px">
                         <input type="checkbox" name="rules" class="checkbox-input" style="margin-bottom: auto; margin-right: 7px;" required>
-                        Я согласен с <a href="#" class="font-blue-16px" style="font-size: 15px; font-weight: 400;">условиями</a> использования
+                        Я ознакомлен(а) и согласен(на) с <a href="{{route('rules')}}" class="font-blue-16px" style="font-size: 15px; font-weight: 400;">Политикой конфиденциальности</a>
                     </label>
                     <button type="submit" class="btn-submit-reg font-white-17px">Отправить</button>
                 </form>

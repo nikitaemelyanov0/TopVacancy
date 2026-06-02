@@ -12,7 +12,7 @@
                         <img src="{{asset('assets/images/glass.png')}}" alt="" class="glass">
                         <form action="{{route('search_vacancy')}}" method="GET" class="home-search">
                             <input type="text" placeholder="Найти вакансию" class="search-field font-grey-16px" name="position">
-                            <button type="submit" class="btn-search font-white-16px">Найти</button>
+                            <button type="submit" class="btn-search font-white-16px" name="search">Найти</button>
                         </form>    
                     </div>
                 </div>

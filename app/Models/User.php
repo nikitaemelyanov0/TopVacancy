@@ -26,4 +26,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Company::class);
     }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
+    }
 }

@@ -62,4 +62,9 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect('/');
     }
+
+    public function rulesIndex()
+    {
+        return view('rules');
+    }
 }
