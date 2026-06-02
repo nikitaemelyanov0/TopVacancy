@@ -47,11 +47,11 @@ class AppServiceProvider extends ServiceProvider
             $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
             $location = $response->json();
 
-            $view->with('location', $location);            
-            $view->with('currentuser', $currentuser);
-            
-            // $location['city'] = "Челябинск";
             // $view->with('location', $location);            
+            // $view->with('currentuser', $currentuser);
+            
+            $location['city'] = "Челябинск";
+            $view->with('location', $location);            
         }); 
     }
 }
