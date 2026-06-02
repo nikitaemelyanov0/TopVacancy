@@ -36,19 +36,19 @@ class AppServiceProvider extends ServiceProvider
                 $currentuser = User::find($id);
             }
 
-            // $ip = $_SERVER['REMOTE_ADDR'];
+            $ip = $_SERVER['REMOTE_ADDR'];
             
-            // if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            //     $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; 
-            // }            
-            // if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
-            //     $ip = 'Не удалось получить IP';
-            // }
-            // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
-            // $location = $response->json();
+            if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; 
+            }            
+            if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
+                $ip = 'Не удалось получить IP';
+            }
+            $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
+            $location = $response->json();
 
             // $view->with('location', $location);            
-            $view->with('currentuser', $currentuser);
+            // $view->with('currentuser', $currentuser);
             
             $location['city'] = "Челябинск";
             $view->with('location', $location);            
