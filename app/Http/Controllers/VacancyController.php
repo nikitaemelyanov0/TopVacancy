@@ -50,8 +50,11 @@ class VacancyController extends Controller
         $categories = $vacancy->categories;
 
         $vacancies = Vacancy::Where('position', 'like', '%'.$vacancy->position.'%')->get();
+
+        $reviewsCount = $vacancy->company->reviews->count();
+        $reviewsAvg = round($vacancy->company->reviews()->avg('grade'), 1);
         
-        return view('vacancy', compact(['categories', 'vacancy', 'vacancies']));
+        return view('vacancy', compact(['categories', 'vacancy', 'vacancies', 'reviewsCount', 'reviewsAvg']));
     }
 
     public function destroy($id)

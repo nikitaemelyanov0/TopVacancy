@@ -15,7 +15,11 @@ class CompanyController extends Controller
     {   
         $reviews = $company->reviews;
         $vacancies = Vacancy::where('company_id', $company->id)->get();
-        return view('company', compact('company', 'vacancies', 'reviews'));
+
+        $reviewsCount = $company->reviews->count();
+        $reviewsAvg = round($company->reviews()->avg('grade'), 1);
+        
+        return view('company', compact('company', 'vacancies', 'reviews', 'reviewsCount', 'reviewsAvg'));
     }
     
     public function createCompanyIndex()

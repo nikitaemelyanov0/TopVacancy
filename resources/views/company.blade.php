@@ -17,14 +17,29 @@
                     <li class="card-vacancy-list-locate">{{$company->phone}}</li>
                     <li class="card-vacancy-list-locate">{{$company->email}}</li>
                 </ul>
-                <ul class="card-vacancy-list font-black-16px">
-                    <li class="card-vacancy-list-locate"></li>
-                    @if($reviews->isEmpty())
-                        <li class="card-vacancy-list-locate" style="margin-top: 22px">Нет отзывов</li>
+                <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center;">
+                    @if($company->reviews->isEmpty())
+                        <div>
+                            <p class="font-black-17px">0 отзывов</p>
+                        </div> 
                     @else
-                        <li class="card-vacancy-list-locate" style="margin-top: 22px">{{$reviews->count()}} отзыва</li>
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                            <p class="font-black-17px">{{$reviewsAvg}}</p>
+                            <div class="rating-view">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <span class="
+                                        star
+                                        {{ $reviewsAvg >= $i ? 'full' : '' }}
+                                        {{ $reviewsAvg >= $i - 0.5 && $reviewsAvg < $i ? 'half' : '' }}
+                                    " style="width: 18px;"></span>
+                                @endfor
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-black-17px">{{$reviewsCount}} отзывов</p>
+                        </div>  
                     @endif
-                </ul>
+                </div>
             </div>
         </div>
         <div class="resume-body">
@@ -34,7 +49,7 @@
             @if(Auth::user()->id==$company->user_id  || $currentuser->role=='admin')
                 <div class="btns-update-delete">
                     <a href="{{route('company.edit', $company)}}" class="btn-update font-white-17px hover">Изменить</a>
-                    <form method="POST" action="{{route('company.destroy', $company->id)}}" style="width: 140px">
+                    <form method="POST" action="{{route('company.destroy', $company->id)}}" style="width: 140px" onsubmit="return confirm('Вы уверены, что хотите удалить вашу компанию?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn-delete font-white-17px" type="submit">Удалить</button>
@@ -69,7 +84,15 @@
                     <div class="btns-aplication-contacts-small">
                         <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 227px);">
                             @csrf
-                            <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                            @if (Auth::user())
+                                @if($vacancy->resumes->contains(Auth::user()->resume))
+                                    <button class="btn-aplication-small font-blue-17px" type="submit" style="background-color: white; border: 1px solid #2584C9;">Вы откликнулись</button>
+                                @else
+                                    <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                @endif
+                            @else
+                                <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                            @endif
                         </form>
                         <button class="btn-contacts-small font-blue-17px">Контакты</button>
                     </div>
@@ -83,9 +106,7 @@
                 </div>
         </div>
         @endforeach
-        @if(!$reviews->isEmpty())
             <h3 class="font-black-19px" style="margin-bottom: 30px; margin-top: 60px;">Отзывы</h3>  
-        @endif
         @if(Auth::user())
             @if(!Auth::user()->review()->where('company_id', $company->id)->exists() && $company->user_id != Auth::id())
                 <a href="{{ route('review.index', $company) }}"><button class="btn-aplication-small font-white-17px" style="width: min(100%, 170px);" type="submit">Оставить отзыв</button></a>  

@@ -37,8 +37,8 @@
                                 <a href="{{route('create_resume.index')}}"><li class="font-black-17px">Создать резюме</li></a>
                             @endif
                         @endif
-                        <a href="{{route('logout')}}"><li class="font-blue-17px hover">Выйти из аккаунта</li></a>
-                        <a href="{{route('delete_user')}}"><li class="font-red-17px hover">Удалить аккаунт</li></a>
+                        <a href="{{route('logout')}}" onclick="return confirm('Вы уверены, что хотите выйти из вашего аккаунт?')"><li class="font-blue-17px hover">Выйти из аккаунта</li></a>
+                        <a href="{{route('delete_user')}}"  onclick="return confirm('Вы уверены, что хотите удалить ваш аккаунт?')"><li class="font-red-17px hover">Удалить аккаунт</li></a>
                     </ul>
                 </div>
             </div>

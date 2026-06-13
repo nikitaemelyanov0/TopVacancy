@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
             $location = $response->json();
 
             // $view->with('location', $location);            
-            // $view->with('currentuser', $currentuser);
+            $view->with('currentuser', $currentuser);
             
             $location['city'] = "Челябинск";
             $view->with('location', $location);            

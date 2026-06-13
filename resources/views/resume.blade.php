@@ -35,7 +35,7 @@
             @if($currentuser->id==$resume->user_id || $currentuser->role=='admin')
                 <div class="btns-update-delete">
                     <a href="{{route('resume.edit', $resume->id)}}" class="btn-update font-white-17px hover">Изменить</a>
-                    <form method="POST" action="{{route('resume.destroy', $resume->id)}}" style="width: 140px">
+                    <form method="POST" action="{{route('resume.destroy', $resume->id)}}" style="width: 140px" onsubmit="return confirm('Вы уверены, что хотите удалить ваше резюме?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn-delete font-white-17px" type="submit">Удалить</button>

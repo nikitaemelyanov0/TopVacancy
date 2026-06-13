@@ -28,14 +28,47 @@
             <div class="btns-aplication-contacts">
                 <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 413px);">
                     @csrf
-                    <button class="btn-aplication font-white-17px" type="submit">Откликнуться</button>
+                    @if (Auth::user())
+                        @if($vacancy->resumes->contains(Auth::user()->resume))
+                            <button class="btn-aplication font-blue-17px" type="submit" style="background-color: white; border: 1px solid #2584C9;">Вы откликнулись</button>
+                        @else
+                            <button class="btn-aplication font-white-17px" type="submit">Откликнуться</button>
+                        @endif
+                    @else
+                        <button class="btn-aplication font-white-17px" type="submit">Откликнуться</button>
+                    @endif
                 </form>
                 <button class="btn-contacts font-blue-17px" id="{{$vacancy->id}}">Контакты</button>
             </div>
         </div>
         <a href="{{route('company.index', $vacancy->company)}}" class="vacancy-header-right">
-            <img src="{{asset($vacancy->company->logo)}}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
-            <h3 class="font-black-19px">{{$vacancy->company->company_name}}</h3>
+            <div style="display: flex; align-items: center; gap: 20px">
+                <img src="{{asset($vacancy->company->logo)}}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
+                <h3 class="font-black-19px">{{$vacancy->company->company_name}}</h3>
+            </div>
+            <div style="margin-top: 25px; display: flex; justify-content: space-between;  align-items: center;">
+                @if($vacancy->company->reviews->isEmpty())
+                    <div>
+                        <p class="font-black-17px">0 отзывов</p>
+                    </div> 
+                @else
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                        <p class="font-black-17px">{{$reviewsAvg}}</p>
+                        <div class="rating-view">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <span class="
+                                    star
+                                    {{ $reviewsAvg >= $i ? 'full' : '' }}
+                                    {{ $reviewsAvg >= $i - 0.5 && $reviewsAvg < $i ? 'half' : '' }}
+                                " style="width: 18px;"></span>
+                            @endfor
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-black-17px">{{$reviewsCount}} отзывов</p>
+                    </div>  
+                @endif
+            </div>
         </a>
     </div>
     <div class="vacancy-description wrapper">
@@ -48,7 +81,7 @@
             @if(Auth::user()->id==$vacancy->company->user_id || $currentuser->role=='admin')
                 <div class="btns-update-delete">
                     <a href="{{route('vacancy.edit', $vacancy->id)}}" class="btn-update font-white-17px">Изменить</a>
-                    <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px">
+                    <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" style="width: 140px" onsubmit="return confirm('Вы уверены, что хотите удалить вашу вакансию?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn-delete font-white-17px" type="submit">Удалить</button>
@@ -81,7 +114,15 @@
                             <div class="btns-aplication-contacts-small">
                                 <form action="{{route('application.store', $vacancyrelete->id)}}" method="POST" style="width: min(100%, 227px);">
                                     @csrf
-                                    <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                    @if (Auth::user())
+                                        @if($vacancyrelete->resumes->contains(Auth::user()->resume))
+                                            <button class="btn-aplication-small font-blue-17px" type="submit" style="background-color: white; border: 1px solid #2584C9;">Вы откликнулись</button>
+                                        @else
+                                            <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                        @endif
+                                    @else
+                                        <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                    @endif
                                 </form>
                                 <button class="btn-contacts-small font-blue-17px">Контакты</button>
                             </div>

@@ -102,7 +102,15 @@
                         <div class="btns-aplication-contacts-small">
                             <form action="{{route('application.store', $vacancy->id)}}" method="POST" style="width: min(100%, 227px);">
                                 @csrf
-                                <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                @if (Auth::user())
+                                    @if($vacancy->resumes->contains(Auth::user()->resume))
+                                        <button class="btn-aplication-small font-blue-17px" type="submit" style="background-color: white; border: 1px solid #2584C9;">Вы откликнулись</button>
+                                    @else
+                                        <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                    @endif
+                                @else
+                                    <button class="btn-aplication-small font-white-17px" type="submit">Откликнуться</button>
+                                @endif
                             </form>
                             <button class="btn-contacts-small font-blue-17px" id="{{$vacancy->id}}">Контакты</button>
                         </div>
