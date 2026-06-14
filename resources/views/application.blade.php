@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Отклики')
+@section('title', 'TopVacancy | Отклики')
 
 @section('content')
    <div class="application wrapper" style="min-height: 80vh">

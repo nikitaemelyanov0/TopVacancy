@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Отклики')
+@section('title', 'Админ')
 
 @section('content')
     <div class="admin wrapper" style="min-height: 80vh">

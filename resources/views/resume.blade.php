@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Резюме')
+@section('title', 'TopVacancy | Резюме ' .$resume->profession)
 
 @section('content')
     <div class="resume wrapper" style="min-height: 80vh">

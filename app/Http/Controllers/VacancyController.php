@@ -108,14 +108,14 @@ class VacancyController extends Controller
     }
 
     public function searchVacancy(Request $request) {
-        $ip = $_SERVER['REMOTE_ADDR'];
+        // $ip = $_SERVER['REMOTE_ADDR'];
             
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; 
-        }            
-        if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
-                $ip = 'Не удалось получить IP';
-        }
+        // if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        //         $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]; 
+        // }            
+        // if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
+        //         $ip = 'Не удалось получить IP';
+        // }
         // $response = Http::get("http://ip-api.com/json/{$ip}?lang=ru");
         // $location = $response->json();
         $location['city'] = 'Челябинск';
@@ -142,7 +142,6 @@ class VacancyController extends Controller
                 $q->where('address', 'like', '%' . $request->address . '%');
             });
         } elseif (!$request->hasAny(['address', 'category', 'salary'])) {
-            // первое открытие страницы
             $query->whereHas('company', function ($q) use ($location) {
                 $q->where('address', 'like', '%' . $location['city'] . '%');
             });

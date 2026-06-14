@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Условия использования')
+@section('title', 'TopVacancy | Условия использования')
 
 @section('content')
     <div class="resume wrapper" style="min-height: 80vh">

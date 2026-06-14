@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Вакансия')
+@section('title', 'TopVacancy | Вакансия ' .$vacancy->position)
 
 @section('content')
     <div class="contacts hide" id="{{$vacancy->id}}">

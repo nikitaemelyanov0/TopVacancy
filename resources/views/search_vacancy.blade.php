@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Поиск вакансий')
+@section('title', 'TopVacancy | Поиск вакансий')
 
 @section('content')
     <div class="search-field-big wrapper">

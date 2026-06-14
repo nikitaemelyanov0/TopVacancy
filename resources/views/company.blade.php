@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Компания')
+@section('title', 'TopVacancy | ' .$company->company_name)
 
 @section('content')
     <div class="resume wrapper" style="min-height: 80vh">
