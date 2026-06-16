@@ -12,4 +12,9 @@ class Company extends Model
     {
         return $this->HasMany(Review::class);
     }
+
+    public function vacancies()
+    {
+        return $this->hasMany(Vacancy::class);
+    }
 }
