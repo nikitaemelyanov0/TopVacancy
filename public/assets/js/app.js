@@ -142,17 +142,3 @@ stars.forEach(star => {
 document.getElementById('rating').addEventListener('mouseleave', () => {
     renderStars(selectedRating);
 });
-
-const modal = document.getElementById('modal');
-
-document.getElementById('openModal').onclick = () => {
-    modal.classList.add('active');
-};
-
-document.getElementById('cancelBtn').onclick = () => {
-    modal.classList.remove('active');
-};
-
-document.getElementById('confirmBtn').onclick = () => {
-    document.getElementById('deleteForm').submit();
-};
