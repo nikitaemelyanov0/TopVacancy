@@ -16,7 +16,7 @@ class IsEmployer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role !='employer') {
+        if(Auth::user()->role !='employer' && Auth::user()->role !='admin') {
             return redirect('/');
         }
         return $next($request);

@@ -16,7 +16,7 @@ class IsApplicant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role !='applicant') {
+        if(Auth::user()->role !='applicant' && Auth::user()->role !='admin') {
             return redirect('/');
         }
         return $next($request);
