@@ -13,9 +13,6 @@ class ResumeController extends Controller
 
     public function createResumeIndex()
     {
-        if (Auth::user()->role=='employer') {
-            return redirect('/');
-        }
         $resume = new Resume();
         return view('create_resume', compact('resume'));
     }
@@ -52,10 +49,7 @@ class ResumeController extends Controller
     public function edit($id)
     {
         $resume = Resume::findOrFail($id);
-        if($resume->user_id==Auth::id() || Auth::user()->role=='admin') {
-            return view('create_resume', compact('resume'));
-        }
-        else return redirect('/');
+        return view('create_resume', compact('resume'));
     }
 
     public function update(ResumeRequest $request, $id)

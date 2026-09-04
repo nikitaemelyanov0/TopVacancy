@@ -16,9 +16,6 @@ class VacancyController extends Controller
 
     public function createVacancyIndex()
     {
-        if (Auth::user()->role=='applicant') {
-            return redirect('/');
-        }
         if (!Company::where('user_id', Auth::id())->exists()){
             return redirect()->route('create_company.index');
         }

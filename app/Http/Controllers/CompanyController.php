@@ -24,9 +24,6 @@ class CompanyController extends Controller
     
     public function createCompanyIndex()
     {
-        if (Auth::user()->role=='applicant') {
-            return redirect('/');
-        }
         $company = new Company();
         return view('create_company', compact('company'));
     }
@@ -44,17 +41,14 @@ class CompanyController extends Controller
         $data['user_id'] = Auth::id();
         Company::create($data);
 
-        return redirect()->route('create_vacancy.index', );
+        return redirect()->route('create_vacancy.index');
     }
 
     public function edit(Company $company)
     {
-        if($company->user_id==Auth::id() || Auth::user()->role=='admin') {
-            return view('create_company', compact('company'));
-        }
-        else return redirect('/');
+        return view('create_company', compact('company'));
     }
-
+    
     public function update(CompanyRequest $request)
     {
         $company = Company::where('user_id', Auth::id())->first();
