@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Vacancy;
 use App\Models\Company;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -51,7 +52,9 @@ class VacancyController extends Controller
         $reviewsCount = $vacancy->company->reviews->count();
         $reviewsAvg = round($vacancy->company->reviews()->avg('grade'), 1);
         
-        return view('vacancy', compact(['categories', 'vacancy', 'vacancies', 'reviewsCount', 'reviewsAvg']));
+        $favorites = Favorite::where('user_id', Auth::id())->get();
+
+        return view('vacancy', compact(['categories', 'vacancy', 'vacancies', 'reviewsCount', 'reviewsAvg', 'favorites']));
     }
 
     public function destroy($id)

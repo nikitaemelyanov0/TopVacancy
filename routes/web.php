@@ -14,6 +14,7 @@ use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Middleware\IsCompanyOwner;
 
 Route::get('/', [VacancyController::class, 'vacanciesAtHome'])->name('home');
@@ -68,6 +69,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('delete_user', [UserController::class, 'delete_user'])->name('delete_user');
     
     Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin')->middleware(IsAdmin::class);
+
+    Route::get('/favorites', [FavoriteController::class, 'Index'])->name('favorite.index')->middleware(IsApplicant::class);
+    Route::get('/removeFromFavorites{id}', [FavoriteController::class, 'removeFromFavorites'])->name('removeFromFavorites');
+    Route::get('/addToFavorites/{id}', [FavoriteController::class, 'addToFavorites'])->name('addToFavorites');
 });
 
 Route::get('logout', [UserController:: class, 'logout'])->name('logout');

@@ -9,29 +9,31 @@
         @else
             <h2 class="font-black-20px" style="margin-bottom: 30px">Ваши вакансии</h2>
             @foreach($vacancies as $vacancy)
-            <a href="{{route('vacancy.index', $vacancy->id)}}" class="a-vacancy"><div class="card-vacancy">
-                <h4 class="font-black-23px">{{$vacancy->position}}</h4>
-                <div class="card-vacancy-tags">
-                    <h5 class="font-black-18px">
-                        @if($vacancy->salary==null)
-                                Не указано
-                        @else
-                            {{$vacancy->salary}}₽ за месяц
-                        @endif
-                    </h5>
-                    <ul class="font-black-16px">
-                        @foreach($vacancy->categories as $category)
-                            @if($category->category_type=='Опыт работы')
-                                {{$category->category_name}}
-                            @endif
-                        @endforeach
-                    </ul>
-                </div>
-                <ul class="card-vacancy-list font-black-16px">
-                    {{$vacancy->company->company_name}}
-                    <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->company->address}}</li>
-                </ul>
-            </div></a>
+                <a href="{{route('vacancy.index', $vacancy->id)}}" class="a-vacancy">
+                    <div class="card-vacancy">
+                        <h4 class="font-black-23px">{{$vacancy->position}}</h4>
+                        <div class="card-vacancy-tags">
+                            <h5 class="font-black-18px">
+                                @if($vacancy->salary==null)
+                                        Не указано
+                                @else
+                                    {{$vacancy->salary}}₽ за месяц
+                                @endif
+                            </h5>
+                            <ul class="font-black-16px">
+                                @foreach($vacancy->categories as $category)
+                                    @if($category->category_type=='Опыт работы')
+                                        {{$category->category_name}}
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                        <ul class="card-vacancy-list font-black-16px">
+                            {{$vacancy->company->company_name}}
+                            <li class="card-vacancy-list-locate"><img src="{{asset('assets/images/location-blue.png')}}" alt="">{{$vacancy->company->address}}</li>
+                        </ul>
+                    </div>
+                </a>
                 @foreach($vacancy->resumes as $resume)
                     @if($loop->first)
                         <div class="application-body">

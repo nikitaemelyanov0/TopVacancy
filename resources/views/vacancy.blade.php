@@ -12,7 +12,20 @@
     </div>
     <div class="vacancy-header wrapper">
         <div class="vacancy-header-left">
-            <h1 class="font-black-30px">{{$vacancy->position}}</h1>
+            <div style="display: flex; justify-content: space-between;">
+                <h1 class="font-black-30px">{{$vacancy->position}}</h1>
+                @if (Auth::user())
+                    @if (Auth::user()->role!='employer')
+                        @if($favorites->contains('vacancy_id', $vacancy->id))
+                            <img src="{{ asset('assets/images/star-full.svg') }}" alt="" style="width: 30px">
+                        @else
+                            <a href="{{ route('addToFavorites', $vacancy->id) }}">
+                                <img src="{{ asset('assets/images/star-empty.svg') }}" alt="" style="width: 30px">
+                            </a>
+                        @endif
+                    @endif
+                @endif
+            </div>
             <h2 class="font-black-21px">
                 @if($vacancy->salary==null)
                     Не указано
