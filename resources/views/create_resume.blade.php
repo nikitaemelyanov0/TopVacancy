@@ -55,9 +55,69 @@
             @enderror
 
             <p class="font-black-18px">Образование</p>
-            <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Среднее" @checked(old('education', $resume->education ?? '') === 'Среднее')>Среднее</label> <br>
-            <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Среднее профессиональное" @checked(old('education', $resume->education ?? '') === 'Среднее профессиональное')>Среднее профессиональное</label> <br>
-            <label for="" class="font-light-16px"><input type="radio" class="checkbox-input" name="education" value="Высшее" @checked(old('education', $resume->education ?? '') === 'Высшее')>Высшее</label> <br>
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Среднее общее"
+                    @checked(old('education', $resume->education ?? '') === 'Среднее общее')>
+                Среднее общее
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Среднее профессиональное"
+                    @checked(old('education', $resume->education ?? '') === 'Среднее профессиональное')>
+                Среднее профессиональное
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Высшее — бакалавриат"
+                    @checked(old('education', $resume->education ?? '') === 'Высшее — бакалавриат')>
+                Высшее — бакалавриат
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Высшее — специалитет"
+                    @checked(old('education', $resume->education ?? '') === 'Высшее — специалитет')>
+                Высшее — специалитет
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Высшее — магистратура"
+                    @checked(old('education', $resume->education ?? '') === 'Высшее — магистратура')>
+                Высшее — магистратура
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Высшее — аспирантура"
+                    @checked(old('education', $resume->education ?? '') === 'Высшее — аспирантура')>
+                Высшее — аспирантура
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Неоконченное высшее"
+                    @checked(old('education', $resume->education ?? '') === 'Неоконченное высшее')>
+                Неоконченное высшее
+            </label>
+            <br>
+
+            <label class="font-light-16px">
+                <input type="radio" class="checkbox-input" name="education"
+                    value="Другое"
+                    @checked(old('education', $resume->education ?? '') === 'Другое')>
+                Другое
+            </label>
+            <br>
             @error('education')
                 <em class="font-red-small">{{$message}}</em>
             @enderror

@@ -53,7 +53,7 @@
                     </div>
                 </div></a>
                 @endforeach
-                @endforeach
+            @endforeach
         @endif
    </div>
 @endsection
