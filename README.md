@@ -44,18 +44,21 @@
 <p align="center">
   <img src="screenshots/main.png" alt="Главная страница" width="600">
 </p>
+<br>
 
 ### Список вакансий
 
 <p align="center">
   <img src="screenshots/vacancies.png" alt="Список вакансий" width="600">
 </p>
+<br>
 
 ### Страница вакансии
 
 <p align="center">
   <img src="screenshots/vacancy.png" alt="Страница вакансии" width="600">
 </p>
+<br>
 
 ### Создание резюме
 
