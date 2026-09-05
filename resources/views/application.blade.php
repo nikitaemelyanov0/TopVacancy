@@ -40,19 +40,19 @@
                         <h1 class="font-black-20px">Отклики</h1>
                     @endif
                         <a href="{{route('resume.index', $resume->id)}}"><div class="resume-header">
-                        <div class="resume-header-left">
-                                <img src="{{asset($resume->photo)}}" alt="" style="width: 227px; height: 227px; object-fit: cover;">
-                        </div>
-                        <div class="resume-header-right">
-                            <h1 class="font-black-20px">{{$resume->profession}}</h1>
-                            <h2 class="font-black-19px">{{$resume->user->user_name}}</h2>
-                            <h3 class="font-black-19px">{{$resume->salary_expectation}}₽ за месяц</h3>
-                            <p class="font-black-high-17px">{{$resume->gender}} {{$resume->date_of_birth}}</p>
-                            <span class="font-black-high-17px">{{$resume->city}}</span>
-                        </div>
-                    </div>
-                </div></a>
-                @endforeach
+                            <div class="resume-header-left">
+                                    <img src="{{asset($resume->photo)}}" alt="" style="width: 227px; height: 227px; object-fit: cover;">
+                            </div>
+                            <div class="resume-header-right">
+                                <h1 class="font-black-20px">{{$resume->profession}}</h1>
+                                <h2 class="font-black-19px">{{$resume->user->user_name}}</h2>
+                                <h3 class="font-black-19px">{{$resume->salary_expectation}}₽ за месяц</h3>
+                                <p class="font-black-high-17px">{{$resume->gender}} {{$resume->date_of_birth}}</p>
+                                <span class="font-black-high-17px">{{$resume->city}}</span>
+                            </div>
+                        </div></a>
+                    @endforeach
+                </div>
             @endforeach
         @endif
    </div>

@@ -12,8 +12,8 @@ class AdminSeeder extends Seeder
     {
         $data = [
             'user_name' => 'admin',
-            'email' => 'admin@mail.ru',
-            'password' => 'admin123',
+            'email' => env('ADMIN_EMAIL'),
+            'password' => env('ADMIN_PASSWORD'),
             'role' => 'admin'
         ];
         $data['password'] = Hash::make($data['password']);
